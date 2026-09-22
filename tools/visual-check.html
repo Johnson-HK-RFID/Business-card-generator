@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><title>Card verification</title>
+<style>body{font:16px Arial;background:#ddd}iframe{width:1100px;height:800px;position:fixed;left:0;top:0;opacity:.001;pointer-events:none}img{width:720px;display:block;margin:16px}</style>
+<pre id="result">Running</pre><iframe src="../index.html"></iframe><div id="images"></div>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script>
+const frame=document.querySelector('iframe');
+frame.onload=async()=>{
+ try{
+ const w=frame.contentWindow,d=w.document;
+ await d.fonts.ready;
+ const downloads=[];
+ w.HTMLAnchorElement.prototype.click=function(){downloads.push(this.href)};
+ async function waitFor(test){for(let i=0;i<100;i++){if(test())return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+d.getElementById('toast').textContent)}
+ const name=d.getElementById('nameEn');name.value='Johnson';name.dispatchEvent(new w.Event('input',{bubbles:true}));
+ if(d.querySelector('[data-output=nameEn]').textContent!=='Johnson')throw Error('Preview did not update');
+ for(const side of ['front','back']){
+ document.getElementById('result').textContent='Rendering '+side;
+ d.querySelector(`[data-side=${side}]`).click();
+ d.getElementById('downloadPng').click();await waitFor(()=>downloads.length>0);
+ const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=downloads.shift()});
+ if(img.naturalWidth!==1063||Math.abs(img.naturalHeight-514)>1)throw Error('Wrong dimensions');
+ document.getElementById('images').append(img);
+ if(side==='front'){
+ const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+ const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);const pixels=ctx.getImageData(0,0,canvas.width,canvas.height);
+ const qr=jsQR(pixels.data,pixels.width,pixels.height);
+ if(!qr||qr.data!==d.getElementById('qrUrl').value)throw Error('Exported branded QR did not decode');
+ }
+ }
+ let pdfInfo;
+ document.getElementById('result').textContent='Rendering PDF';
+ const original=w.jspdf.jsPDF;
+ w.jspdf.jsPDF=function(...args){const pdf=new original(...args);pdf.save=()=>{pdfInfo={pages:pdf.getNumberOfPages(),width:pdf.internal.pageSize.getWidth(),height:pdf.internal.pageSize.getHeight()}};return pdf};
+ d.getElementById('downloadPdf').click();await waitFor(()=>pdfInfo);
+ if(pdfInfo.pages!==2||Math.abs(pdfInfo.height-43.5)>.01)throw Error('Wrong PDF format');
+ document.getElementById('result').textContent='PASS: preview; branded QR decoded; PNG 1063 × 513; PDF '+JSON.stringify(pdfInfo);
+ }catch(e){document.getElementById('result').textContent='FAIL: '+e.stack}
+};
+</script>

@@ -1,0 +1,23 @@
+# Commit only reviewed source files, not browser profiles or exported employee cards.
+/*
+!/.gitignore
+!/.vercelignore
+!/vercel.json
+!/index.html
+!/styles.css
+!/app.js
+!/README.md
+!/793286DF-EA9E-4F52-B235-EC30A1CAAFA0.jpg
+!/FDF655E1-1CC3-4918-B33C-6FCEE3D227E3.jpg
+!/assets/
+/assets/*
+!/assets/embuilded-logo.png
+!/assets/traci-logo.png
+!/assets/traci-logo-on-dark.png
+!/assets/export-resources.js
+!/tools/
+/tools/*
+!/tools/build-export-resources.ps1
+!/tools/convert-logos.ps1
+!/tools/export-smoke.js
+!/tools/visual-check.html

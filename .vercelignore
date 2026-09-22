@@ -1,0 +1,10 @@
+.git
+.chrome-*
+.vercel
+tools
+*.jpg
+*.png
+*.zip
+*.md
+.env*
+!assets/**
