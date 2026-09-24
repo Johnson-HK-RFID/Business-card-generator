@@ -50,7 +50,7 @@
 - `assets/embuilded-logo.png`：由指定 EmbuilDed 原圖提取的透明 Logo
 - `assets/traci-logo.png`：由指定 TRACI 原圖提取的透明原色 Logo
 - `assets/traci-logo-on-dark.png`：保留原字形與黃色、供深色背面使用的白字版本
-- `assets/embuilded-logo.svg`、`assets/traci-logo-on-dark.svg`：从原 Logo 追踪得到的矢量路径
+- `assets/embuilded-logo.svg`、`assets/traci-logo-on-dark.svg`：从原 Logo 重建的纯矢量路径。EmbuilDed 外框与 E、TRACI 的 A 使用几何路径，其余字形经双色遮罩、去噪与曲线简化处理；文件不包含嵌入式图片
 - `assets/vector-resources.js`：网页生成自包含印刷 SVG 时使用的路径资料
 - `tools/convert-logos.ps1`：可從兩張原始 JPG 重新產生以上透明素材
 - `tools/build-vector-resources.ps1`：重新整理网页使用的矢量路径资料

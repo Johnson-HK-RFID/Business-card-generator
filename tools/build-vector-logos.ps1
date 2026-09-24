@@ -41,14 +41,23 @@ function Trace-TwoColorLogo {
     Write-ColorMask $input $yellowMask 'yellow' | Out-Null
     $baseSvg = Join-Path $work ($OutputName + '-base.svg')
     $yellowSvg = Join-Path $work ($OutputName + '-yellow.svg')
-    & $tracer $baseMask $baseSvg --clustering bw --mode spline --threshold 128 --filter-speckle 24 --simplify 1.8 --path-precision 2 --optimize 2
+    & $tracer $baseMask $baseSvg --clustering bw --mode spline --threshold 128 --filter-speckle 32 --simplify 4 --path-precision 2 --optimize 2
     if ($LASTEXITCODE -ne 0) { throw 'Base layer tracing failed.' }
-    & $tracer $yellowMask $yellowSvg --clustering bw --mode spline --threshold 128 --filter-speckle 24 --simplify 1.8 --path-precision 2 --optimize 2
+    & $tracer $yellowMask $yellowSvg --clustering bw --mode spline --threshold 128 --filter-speckle 32 --simplify 4 --path-precision 2 --optimize 2
     if ($LASTEXITCODE -ne 0) { throw 'Yellow layer tracing failed.' }
     $base = [System.IO.File]::ReadAllText($baseSvg)
     $yellow = [System.IO.File]::ReadAllText($yellowSvg)
     $baseBody = [regex]::Match($base,'<svg[^>]*>(?<body>[\s\S]*?)</svg>').Groups['body'].Value -replace 'fill="#[0-9A-Fa-f]{6}"',('fill="'+$BaseColor+'"')
     $yellowBody = [regex]::Match($yellow,'<svg[^>]*>(?<body>[\s\S]*?)</svg>').Groups['body'].Value -replace 'fill="#[0-9A-Fa-f]{6}"','fill="#F7AD00"'
+    if ($OutputName -eq 'embuilded-logo') {
+        $yellowPaths = [regex]::Matches($yellowBody, '<path[^>]+/>')
+        $mPath = $yellowPaths[$yellowPaths.Count - 1].Value
+        $yellowBody = '<g fill="#F7AD00"><path d="M12 10H440v108q-25 10-50 0V59H60v311h79v48H12Z"/><path d="M176 136h153v44h-97v40h85v45h-85v43h98v44H176Z"/>' + $mPath + '</g>'
+    }
+    if ($OutputName -eq 'traci-logo-on-dark') {
+        # The A is geometric. Rebuilding it avoids the scalloped diagonals produced by tracing JPEG pixels.
+        $yellowBody = '<g fill="#F7AD00"><path d="M644 208 785 27Q800 7 819 8q22 1 24 20 1 10-8 22L704 208Z"/><path d="M844 42q9-12 20 1l117 165h-61l-87-121q-15-22 11-45Z"/><rect x="786" y="156" width="52" height="52" rx="4"/></g>'
+    }
     $svg = '<?xml version="1.0" encoding="UTF-8"?>' + [Environment]::NewLine + '<svg xmlns="http://www.w3.org/2000/svg" width="' + $dimensions[0] + '" height="' + $dimensions[1] + '" viewBox="0 0 ' + $dimensions[0] + ' ' + $dimensions[1] + '">' + $baseBody + $yellowBody + '</svg>'
     [System.IO.File]::WriteAllText((Join-Path $projectRoot ('assets/' + $OutputName + '.svg')),$svg,(New-Object System.Text.UTF8Encoding($false)))
 }
