@@ -191,11 +191,9 @@ h1 { margin-bottom: 10px; font-size: 28px; line-height: 1.25; letter-spacing: -.
   height: 310px;
 }
 .front-left { position: absolute; z-index: 1; left: 36px; top: 28px; width: 337px; }
-.embuilded-logo { position: relative; width: 350px; height: 91px; overflow: hidden; }
-.embuilded-logo img { display: block; width: 350px; height: auto; }
-/* Mask only the supplied strapline; retain the complete original bracket and wordmark. */
-.embuilded-logo::after { content: ''; position: absolute; left: 33px; right: 0; top: 80px; bottom: -2px; background: #fff; }
-.identity { margin-top: 9px; }
+.embuilded-logo { position: relative; width: 350px; height: 98px; overflow: visible; }
+.embuilded-logo img { display: block; width: 350px; height: 98px; object-fit: contain; object-position: left top; }
+.identity { margin-top: 2px; }
 .name-en { font-size: 34px; line-height: 1.07; font-weight: 700; letter-spacing: -.8px; white-space: nowrap; }
 .name-zh { margin-top: 2px; font-size: 21px; line-height: 1.2; font-weight: 700; }
 .gold-rule { display: block; width: 43px; height: 3px; margin: 8px 0 7px; background: var(--gold); }

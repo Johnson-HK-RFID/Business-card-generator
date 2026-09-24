@@ -210,7 +210,7 @@
         `<title>${escapeXml(data.nameEn)} business card — front</title>${common}` +
         '<rect width="720" height="348" fill="#fff"/>' +
         '<path d="M720 0 600 46v213l108 37v-37l-70-25V82l82-32Z" fill="#f3dfb8"/>' +
-        `<svg x="36" y="28" width="350" height="80" viewBox="0 0 1568 358" preserveAspectRatio="xMinYMin meet">${CARD_VECTOR_RESOURCES.embuilded.body}</svg>` +
+        `<svg x="36" y="28" width="350" height="98" viewBox="0 0 1568 440" preserveAspectRatio="xMinYMin meet">${CARD_VECTOR_RESOURCES.embuilded.body}</svg>` +
         `<text x="36" y="158" font-size="${nameSize}" font-weight="700">${escapeXml(data.nameEn || '—')}</text>` +
         `<text x="36" y="185" font-size="21" font-weight="700">${escapeXml(data.nameZh || '—')}</text>` +
         '<rect x="36" y="196" width="43" height="3" fill="#f5ad00"/>' +
