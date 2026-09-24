@@ -32,6 +32,15 @@
       if (img.naturalWidth !== 1063 || img.naturalHeight !== 513) throw new Error('Wrong image size');
       img.style.cssText = 'display:block;width:720px;margin:16px 0';
       report.append(img);
+      const svg = window.cardVector.build(side);
+      if (!svg.includes('<svg') || svg.includes('<image') || !svg.includes('<path')) throw new Error('SVG is not self-contained vector artwork');
+      const vector = new Image();
+      const vectorUrl = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
+      await new Promise((resolve, reject) => {vector.onload=resolve;vector.onerror=reject;vector.src=vectorUrl;});
+      if (vector.naturalWidth < 300 || vector.naturalHeight < 150) throw new Error('Invalid SVG dimensions');
+      vector.style.cssText = 'display:block;width:720px;margin:16px 0';
+      report.append(vector);
+      URL.revokeObjectURL(vectorUrl);
     }
     window.jspdf.jsPDF = function (...args) {
       const pdf = new originalPdf(...args);
@@ -47,7 +56,7 @@
     await waitFor(() => pdfInfo);
     if (pdfInfo.pages !== 2 || Math.abs(pdfInfo.height - 43.5) > .01 || pdfInfo.bytes < 10000) throw new Error('Invalid PDF');
     if(document.querySelectorAll('iframe').length) throw new Error('Export iframe leaked');
-    report.firstChild.textContent = 'PASS: ordinary '+location.protocol+'; PNG front/back 1063×513; PDF '+JSON.stringify(pdfInfo);
+    report.firstChild.textContent = 'PASS: ordinary '+location.protocol+'; PNG 1063×513; self-contained vector SVG front/back; PDF '+JSON.stringify(pdfInfo);
   } catch(error) {
     report.firstChild.textContent = 'FAIL: ' + error.stack;
   } finally {

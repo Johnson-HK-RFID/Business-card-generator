@@ -15,9 +15,15 @@
 !/assets/traci-logo.png
 !/assets/traci-logo-on-dark.png
 !/assets/export-resources.js
+!/assets/embuilded-logo.svg
+!/assets/traci-logo-on-dark.svg
+!/assets/vector-resources.js
 !/tools/
 /tools/*
 !/tools/build-export-resources.ps1
 !/tools/convert-logos.ps1
 !/tools/export-smoke.js
 !/tools/visual-check.html
+!/tools/build-vector-resources.ps1
+!/tools/build-vector-logos.ps1
+!/tools/vector-smoke.js

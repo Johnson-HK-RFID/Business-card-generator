@@ -161,12 +161,13 @@
 
       <div class="actions">
         <button class="button button-primary" id="downloadPng" type="button">下載 PNG</button>
+        <button class="button button-vector" id="downloadSvg" type="button">下載 SVG（印刷）</button>
         <button class="button" id="downloadPdf" type="button">下載雙面 PDF</button>
         <button class="button" id="copyLink" type="button">複製分享連結</button>
         <button class="button button-quiet" id="exportData" type="button">匯出資料</button>
         <label class="button button-quiet file-button">匯入資料<input id="importData" type="file" accept="application/json"></label>
       </div>
-      <p class="export-note">參考圖長形比例：90 × 43.5 mm，輸出約 300 DPI。送印前請與印刷商確認尺寸與出血。</p>
+      <p class="export-note">印刷優先使用 SVG 矢量檔；PNG／PDF 約 300 DPI。尺寸為 90 × 43.5 mm，送印前請確認尺寸、字體輪廓與出血。</p>
     </section>
   </main>
 
@@ -176,6 +177,7 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
   <script src="assets/export-resources.js"></script>
+  <script src="assets/vector-resources.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

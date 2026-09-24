@@ -2,6 +2,8 @@
 
 一個不需要修改程式碼的名片編輯器。使用者在表單輸入資料，名片會即時更新，並可下載約 300 DPI PNG 或 90 × 43.5 mm 雙面 PDF。版面採用參考圖的長形比例；送印前請確認尺寸與出血要求。
 
+印刷用途請优先下载「SVG（印刷）」：Logo、QR Code、文字、线条和装饰都以矢量元素输出，尺寸为 90 × 43.5 mm。SVG 文字保持可编辑；交给印刷商时应在 Illustrator、Affinity Designer 或 Inkscape 中将文字转为轮廓，以完全避免字体替换。原有 PNG 与双面 PDF 维持不变，方便预览和一般打印。
+
 正面隱藏原 Logo 下方的 Built World Intelligence 小字，保留主標誌；QR Code 帶有中央金色 E 圖標、四模組留白及 H 級錯誤更正。背面沿用 TRACI 原圖的主標誌輪廓，五項文字獨立排版，底部附註的「·」或「|」會顯示為金色分隔線。員工已有的瀏覽器資料會繼續保留。
 
 ## 立即使用
@@ -48,4 +50,7 @@
 - `assets/embuilded-logo.png`：由指定 EmbuilDed 原圖提取的透明 Logo
 - `assets/traci-logo.png`：由指定 TRACI 原圖提取的透明原色 Logo
 - `assets/traci-logo-on-dark.png`：保留原字形與黃色、供深色背面使用的白字版本
+- `assets/embuilded-logo.svg`、`assets/traci-logo-on-dark.svg`：从原 Logo 追踪得到的矢量路径
+- `assets/vector-resources.js`：网页生成自包含印刷 SVG 时使用的路径资料
 - `tools/convert-logos.ps1`：可從兩張原始 JPG 重新產生以上透明素材
+- `tools/build-vector-resources.ps1`：重新整理网页使用的矢量路径资料

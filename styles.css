@@ -252,6 +252,7 @@ h1 { margin-bottom: 10px; font-size: 28px; line-height: 1.25; letter-spacing: -.
 }
 .button:hover { transform: translateY(-1px); border-color: #aab2b8; box-shadow: 0 4px 10px rgba(16,24,32,.08); }
 .button-primary { color: var(--ink); background: var(--gold-bright); border-color: var(--gold-bright); }
+.button-vector { color: #fff; background: var(--ink); border-color: var(--ink); }
 .button-quiet { color: #657078; background: transparent; }
 .file-button input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 .export-note { margin: 12px 0 0; color: #7b8389; font-size: 12px; }

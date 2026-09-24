@@ -148,6 +148,117 @@
     });
   }
 
+  function escapeXml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, character => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;'
+    })[character]);
+  }
+
+  function fittedFontSize(selector, fallback) {
+    const node = document.querySelector(selector);
+    return node ? parseFloat(getComputedStyle(node).fontSize) || fallback : fallback;
+  }
+
+  function makeQrVector(value, x, y, size) {
+    const container = document.createElement('div');
+    const qr = new QRCode(container, {
+      text: value || defaults.qrUrl,
+      width: 512,
+      height: 512,
+      colorDark: '#101820',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    const matrix = qr._oQRCode;
+    const count = matrix.getModuleCount();
+    const moduleSize = size / (count + 8);
+    let path = '';
+    for (let row = 0; row < count; row++) {
+      for (let column = 0; column < count; column++) {
+        if (!matrix.isDark(row, column)) continue;
+        const px = x + (column + 4) * moduleSize;
+        const py = y + (row + 4) * moduleSize;
+        path += `M${px.toFixed(3)} ${py.toFixed(3)}h${moduleSize.toFixed(3)}v${moduleSize.toFixed(3)}h-${moduleSize.toFixed(3)}z`;
+      }
+    }
+    const logoSize = Math.floor(count * .28) * moduleSize;
+    const logoX = x + (size - logoSize) / 2;
+    const logoY = y + (size - logoSize) / 2;
+    const sx = logoSize * .7 / 40;
+    const sy = logoSize * .76 / 46;
+    return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="#fff"/>` +
+      `<path d="${path}" fill="#101820" shape-rendering="crispEdges"/>` +
+      `<rect x="${logoX.toFixed(3)}" y="${logoY.toFixed(3)}" width="${logoSize.toFixed(3)}" height="${logoSize.toFixed(3)}" fill="#fff"/>` +
+      `<g transform="translate(${(logoX + logoSize * .16).toFixed(3)} ${(logoY + logoSize * .12).toFixed(3)}) scale(${sx.toFixed(5)} ${sy.toFixed(5)})" fill="#f5ad00">` +
+      '<path d="M0 0h34v5H5v36h9v5H0zM14 11h21v5H19v6h13v5H19v7h16v5H14z"/></g>';
+  }
+
+  function buildVectorSvg(side) {
+    if (!window.CARD_VECTOR_RESOURCES) throw new Error('缺少矢量 Logo 素材。');
+    const data = getData();
+    const fontFamily = 'Arial, Microsoft JhengHei, Noto Sans TC, sans-serif';
+    const common = `<style>text{font-family:${fontFamily}}.card-small{font-size:12px}.lettered{letter-spacing:2.4px}</style>`;
+    if (side === 'front') {
+      const nameSize = fittedFontSize('.name-en', 34);
+      const titleSize = fittedFontSize('.job-title', 20);
+      const contactSize = fittedFontSize('.contact-row span', 17);
+      const companySize = fittedFontSize('.company-name', 12);
+      const websiteSize = fittedFontSize('.website', 12);
+      const taglineSize = fittedFontSize('.front-tagline strong', 10);
+      return `<?xml version="1.0" encoding="UTF-8"?>\n` +
+        `<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="43.5mm" viewBox="0 0 720 348">` +
+        `<title>${escapeXml(data.nameEn)} business card — front</title>${common}` +
+        '<rect width="720" height="348" fill="#fff"/>' +
+        '<path d="M720 0 600 46v213l108 37v-37l-70-25V82l82-32Z" fill="#f3dfb8"/>' +
+        `<svg x="36" y="28" width="350" height="80" viewBox="0 0 1568 358" preserveAspectRatio="xMinYMin meet">${CARD_VECTOR_RESOURCES.embuilded.body}</svg>` +
+        `<text x="36" y="158" font-size="${nameSize}" font-weight="700">${escapeXml(data.nameEn || '—')}</text>` +
+        `<text x="36" y="185" font-size="21" font-weight="700">${escapeXml(data.nameZh || '—')}</text>` +
+        '<rect x="36" y="196" width="43" height="3" fill="#f5ad00"/>' +
+        `<text x="36" y="226" font-size="${titleSize}">${escapeXml(data.title || '—')}</text>` +
+        '<path d="M5 2 2 4c-1 7 10 18 17 18l3-4-6-4-2 3c-3-1-6-4-7-7l3-2-3-6Z" fill="#101820" transform="translate(36 244) scale(.9)"/>' +
+        `<text x="89" y="267" font-size="${contactSize}">${escapeXml(data.phone || '—')}</text>` +
+        '<rect x="36" y="279" width="24" height="18" rx="2" fill="#101820"/><path d="m37 280 11 9 11-9" fill="none" stroke="#fff"/>' +
+        `<text x="89" y="294" font-size="${contactSize}">${escapeXml(data.email || '—')}</text>` +
+        '<line x1="376" y1="132" x2="376" y2="293" stroke="#aeb3b6"/>' +
+        makeQrVector(data.qrUrl || data.website, 428.5, 126, 128) +
+        `<text x="492.5" y="272" text-anchor="middle" font-size="${companySize}" font-weight="700">${escapeXml(data.company || '—')}</text>` +
+        `<text x="492.5" y="291" text-anchor="middle" font-size="${websiteSize}" letter-spacing=".54">${escapeXml(cleanWebsite(data.website) || '—')}</text>` +
+        '<rect x="36" y="326" width="46" height="3" fill="#f5ad00"/>' +
+        `<text x="96" y="332" font-size="${taglineSize}" font-weight="500" letter-spacing="2.4">${escapeXml(data.tagline || '—')}</text>` +
+        '</svg>';
+    }
+
+    const footerParts = data.footer.split(/\s*[·|]\s*/);
+    const footerLeft = footerParts.shift() || '—';
+    const footerRight = footerParts.join(' · ');
+    const footerSize = fittedFontSize('.back-footer p', 12);
+    const terms = [
+      ['TRACKING', 48], ['REPORTING', 173], ['ANALYTICS', 299], ['COMPLIANCE', 425], ['INTELLIGENCE', 563]
+    ].map(([label, x]) => `<text x="${x}" y="151" fill="#e6e8e9" font-size="10" letter-spacing="2">${label}</text>`).join('');
+    return `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="43.5mm" viewBox="0 0 720 348">` +
+      `<title>${escapeXml(data.nameEn)} business card — back</title>${common}` +
+      '<defs><linearGradient id="back" x1="0" x2="1"><stop stop-color="#252b2f"/><stop offset="1" stop-color="#171c1f"/></linearGradient></defs>' +
+      '<rect width="720" height="348" fill="url(#back)"/>' +
+      '<path d="M720 172 608 209v139h32V233l80-26Z" fill="#fff" fill-opacity=".10"/>' +
+      `<svg x="233" y="76" width="254" height="38" viewBox="75 0 1352 202" preserveAspectRatio="xMidYMid meet">${CARD_VECTOR_RESOURCES.traci.body}</svg>` +
+      terms +
+      '<rect x="141" y="136" width="1" height="20" fill="#f5ad00"/><rect x="267" y="136" width="1" height="20" fill="#f5ad00"/><rect x="393" y="136" width="1" height="20" fill="#f5ad00"/><rect x="531" y="136" width="1" height="20" fill="#f5ad00"/>' +
+      '<line x1="42" y1="277" x2="575" y2="277" stroke="#bec3c5"/>' +
+      `<text x="42" y="311" fill="#fff" font-size="${footerSize}">${escapeXml(footerLeft)}</text>` +
+      '<rect x="190" y="291" width="1" height="20" fill="#f5ad00"/>' +
+      `<text x="208" y="311" fill="#fff" font-size="${footerSize}">${escapeXml(footerRight)}</text>` +
+      '</svg>';
+  }
+
+  function downloadVector(side) {
+    const svg = buildVectorSvg(side);
+    const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    downloadUrl(url, `${safeFilename()}-${side}-print.svg`);
+    window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
   async function renderCard(element) {
     if (!window.html2canvas) throw new Error('輸出工具尚未載入，請確認網絡連線。');
     if (!window.CARD_EXPORT_RESOURCES) throw new Error('缺少匯出素材，請確認 assets/export-resources.js 與網頁在同一資料夾。');
@@ -232,6 +343,15 @@
     } finally {
       button.disabled = false;
       button.textContent = '下載 PNG';
+    }
+  });
+
+  document.getElementById('downloadSvg').addEventListener('click', () => {
+    try {
+      downloadVector(currentSide);
+      showToast(`${currentSide === 'front' ? '正面' : '背面'} SVG 已下載`);
+    } catch (error) {
+      showToast(error.message);
     }
   });
 
@@ -321,9 +441,15 @@
   fitCard();
   document.fonts.ready.then(fitText);
   if ('ResizeObserver' in window) new ResizeObserver(fitCard).observe(stage);
+  window.cardVector = { build: buildVectorSvg };
   if (new URLSearchParams(location.search).get('export-test') === '1') {
     const script = document.createElement('script');
     script.src = 'tools/export-smoke.js';
+    document.body.append(script);
+  }
+  if (new URLSearchParams(location.search).get('vector-test') === '1') {
+    const script = document.createElement('script');
+    script.src = 'tools/vector-smoke.js';
     document.body.append(script);
   }
 })();
