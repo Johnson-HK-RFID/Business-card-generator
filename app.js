@@ -346,13 +346,15 @@
     }
   });
 
-  document.getElementById('downloadSvg').addEventListener('click', () => {
-    try {
-      downloadVector(currentSide);
-      showToast(`${currentSide === 'front' ? '正面' : '背面'} SVG 已下載`);
-    } catch (error) {
-      showToast(error.message);
-    }
+  [['downloadFrontSvg', 'front'], ['downloadBackSvg', 'back']].forEach(([buttonId, side]) => {
+    document.getElementById(buttonId).addEventListener('click', () => {
+      try {
+        downloadVector(side);
+        showToast(`${side === 'front' ? '正面' : '背面'} SVG 已下載`);
+      } catch (error) {
+        showToast(error.message);
+      }
+    });
   });
 
   document.getElementById('downloadPdf').addEventListener('click', async () => {

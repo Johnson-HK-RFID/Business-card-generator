@@ -6,8 +6,7 @@
     const originalClick = HTMLAnchorElement.prototype.click;
     HTMLAnchorElement.prototype.click = function () { downloads.push({name:this.download, url:this.href, attached:this.isConnected}); };
     const views = ['front', 'back'].map(side => {
-      document.querySelector(`[data-side="${side}"]`).click();
-      document.getElementById('downloadSvg').click();
+      document.getElementById(side === 'front' ? 'downloadFrontSvg' : 'downloadBackSvg').click();
       const download = downloads.shift();
       if (!download || !download.attached || !download.name.endsWith(`-${side}-print.svg`)) throw new Error(`${side} SVG download did not start`);
       const svg = window.cardVector.build(side);
@@ -19,7 +18,7 @@
     });
     HTMLAnchorElement.prototype.click = originalClick;
     const status = document.createElement('p');
-    status.textContent = 'PASS: front/back are self-contained SVG vector artwork';
+    status.textContent = 'PASS: independent front/back downloads are self-contained SVG vector artwork';
     report.append(status, ...views);
   } catch (error) {
     report.textContent = 'FAIL: ' + error.stack;
