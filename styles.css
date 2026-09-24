@@ -132,6 +132,9 @@ h1 { margin-bottom: 10px; font-size: 28px; line-height: 1.25; letter-spacing: -.
 }
 .field input:focus { border-color: #b17b00; box-shadow: 0 0 0 3px rgba(245, 173, 0, .14); }
 .field small { color: #8a9196; font-weight: 400; line-height: 1.4; }
+.logo-upload-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.logo-upload-button { position: relative; overflow: hidden; }
+.logo-upload-button input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
 .preview-panel {
   min-width: 0;

@@ -82,6 +82,22 @@
             <h2 id="company-title">公司內容</h2>
           </div>
           <div class="field-grid">
+            <div class="field field-full">
+              <span>正面 EmbuilDed Logo</span>
+              <div class="logo-upload-row">
+                <label class="button logo-upload-button">選擇 Logo<input id="frontLogoUpload" type="file" accept="image/svg+xml,image/png,image/jpeg,image/webp"></label>
+                <button class="button button-quiet logo-reset" data-logo-reset="front" type="button">恢復預設</button>
+              </div>
+              <small>建議上傳 SVG；PNG／JPG 亦可使用，但印刷清晰度取決於原圖。</small>
+            </div>
+            <div class="field field-full">
+              <span>背面 TRACI Logo</span>
+              <div class="logo-upload-row">
+                <label class="button logo-upload-button">選擇 Logo<input id="backLogoUpload" type="file" accept="image/svg+xml,image/png,image/jpeg,image/webp"></label>
+                <button class="button button-quiet logo-reset" data-logo-reset="back" type="button">恢復預設</button>
+              </div>
+              <small>替換後會同步套用至預覽、PNG、PDF 與 SVG 輸出。</small>
+            </div>
             <label class="field field-full">
               <span>公司名稱</span>
               <input id="company" name="company" type="text" value="EmbuilDed Intelligence Limited" maxlength="60">
@@ -117,7 +133,7 @@
             <svg class="front-watermark" viewBox="0 0 120 310" aria-hidden="true"><path d="M120 0 L0 46 L0 259 L108 296 L108 259 L38 234 L38 82 L120 50 Z" fill="#f3dfb8"/></svg>
             <div class="front-left">
               <div class="embuilded-logo">
-                <img src="assets/embuilded-logo.svg" alt="EmbuilDed" decoding="sync">
+                <img id="frontLogoPreview" src="assets/embuilded-logo.svg" alt="EmbuilDed" decoding="sync">
               </div>
               <div class="identity">
                 <div class="name-en" data-output="nameEn">Kevin Chan</div>
@@ -148,7 +164,7 @@
           <article class="business-card card-back" id="cardBack" aria-label="名片背面預覽" hidden>
             <svg class="back-grid" viewBox="0 0 112 176" aria-hidden="true"><path d="M112 0 0 37 0 176 32 176 32 61 112 35Z" fill="#ffffff" fill-opacity=".10"/></svg>
             <div class="traci-lockup">
-              <div class="traci-symbol"><img src="assets/traci-logo-on-dark.png" alt="TRACI" decoding="sync"></div>
+              <div class="traci-symbol"><img id="backLogoPreview" src="assets/traci-logo-on-dark.svg" alt="TRACI" decoding="sync"></div>
               <div class="traci-terms"><span>TRACKING</span><i></i><span>REPORTING</span><i></i><span>ANALYTICS</span><i></i><span>COMPLIANCE</span><i></i><span>INTELLIGENCE</span></div>
             </div>
             <div class="back-footer">

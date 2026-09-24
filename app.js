@@ -9,6 +9,9 @@
   const stage = document.querySelector('.preview-stage');
   const saveStatus = document.getElementById('saveStatus');
   const toast = document.getElementById('toast');
+  const logoDefaults = { front: 'assets/embuilded-logo.svg', back: 'assets/traci-logo-on-dark.svg' };
+  const logoPreviews = { front: document.getElementById('frontLogoPreview'), back: document.getElementById('backLogoPreview') };
+  let customLogos = { front: '', back: '' };
   // Data-backed SVG images are also supported by the PNG/PDF renderer.
   document.querySelectorAll('.business-card svg').forEach(svg => {
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -23,7 +26,10 @@
   let currentSide = 'front';
   let toastTimer;
 
-  const getData = () => Object.fromEntries(fields.map(id => [id, document.getElementById(id).value.trim()]));
+  const getData = () => ({
+    ...Object.fromEntries(fields.map(id => [id, document.getElementById(id).value.trim()])),
+    logos: { ...customLogos }
+  });
 
   function cleanWebsite(value) {
     return value.replace(/^https?:\/\//i, '').replace(/\/$/, '');
@@ -33,7 +39,37 @@
     fields.forEach(id => {
       if (typeof data[id] === 'string') document.getElementById(id).value = data[id];
     });
+    customLogos.front = data.logos && typeof data.logos.front === 'string' ? data.logos.front : '';
+    customLogos.back = data.logos && typeof data.logos.back === 'string' ? data.logos.back : '';
+    applyLogos();
     updatePreview(false);
+  }
+
+  function applyLogos() {
+    Object.keys(logoPreviews).forEach(side => {
+      logoPreviews[side].src = customLogos[side] || logoDefaults[side];
+    });
+  }
+
+  function readLogo(file, side) {
+    if (!file) return;
+    if (!/^image\/(svg\+xml|png|jpeg|webp)$/i.test(file.type)) {
+      showToast('請選擇 SVG、PNG、JPG 或 WebP Logo');
+      return;
+    }
+    if (file.size > 2500000) {
+      showToast('Logo 檔案請控制在 2.5 MB 以內');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      customLogos[side] = String(reader.result);
+      applyLogos();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(getData()));
+      showToast(`${side === 'front' ? '正面' : '背面'} Logo 已替換`);
+    };
+    reader.onerror = () => showToast('無法讀取 Logo 檔案');
+    reader.readAsDataURL(file);
   }
 
   function updateText(key, value) {
@@ -159,6 +195,14 @@
     return node ? parseFloat(getComputedStyle(node).fontSize) || fallback : fallback;
   }
 
+  function logoVectorMarkup(side, x, y, width, height, viewBox, defaultBody, preserve = 'xMinYMin meet') {
+    const custom = customLogos[side];
+    if (custom) {
+      return `<image x="${x}" y="${y}" width="${width}" height="${height}" href="${escapeXml(custom)}" preserveAspectRatio="${preserve}"/>`;
+    }
+    return `<svg x="${x}" y="${y}" width="${width}" height="${height}" viewBox="${viewBox}" preserveAspectRatio="${preserve}">${defaultBody}</svg>`;
+  }
+
   function makeQrVector(value, x, y, size) {
     const container = document.createElement('div');
     const qr = new QRCode(container, {
@@ -210,7 +254,7 @@
         `<title>${escapeXml(data.nameEn)} business card — front</title>${common}` +
         '<rect width="720" height="348" fill="#fff"/>' +
         '<path d="M720 0 600 46v213l108 37v-37l-70-25V82l82-32Z" fill="#f3dfb8"/>' +
-        `<svg x="36" y="28" width="350" height="98" viewBox="0 0 1568 440" preserveAspectRatio="xMinYMin meet">${CARD_VECTOR_RESOURCES.embuilded.body}</svg>` +
+        logoVectorMarkup('front', 36, 28, 350, 98, '0 0 1568 440', CARD_VECTOR_RESOURCES.embuilded.body) +
         `<text x="36" y="158" font-size="${nameSize}" font-weight="700">${escapeXml(data.nameEn || '—')}</text>` +
         `<text x="36" y="185" font-size="21" font-weight="700">${escapeXml(data.nameZh || '—')}</text>` +
         '<rect x="36" y="196" width="43" height="3" fill="#f5ad00"/>' +
@@ -241,7 +285,7 @@
       '<defs><linearGradient id="back" x1="0" x2="1"><stop stop-color="#252b2f"/><stop offset="1" stop-color="#171c1f"/></linearGradient></defs>' +
       '<rect width="720" height="348" fill="url(#back)"/>' +
       '<path d="M720 172 608 209v139h32V233l80-26Z" fill="#fff" fill-opacity=".10"/>' +
-      `<svg x="233" y="76" width="254" height="38" viewBox="75 0 1352 202" preserveAspectRatio="xMidYMid meet">${CARD_VECTOR_RESOURCES.traci.body}</svg>` +
+      logoVectorMarkup('back', 233, 76, 254, 38, '75 0 1352 202', CARD_VECTOR_RESOURCES.traci.body, 'xMidYMid meet') +
       terms +
       '<rect x="141" y="136" width="1" height="20" fill="#f5ad00"/><rect x="267" y="136" width="1" height="20" fill="#f5ad00"/><rect x="393" y="136" width="1" height="20" fill="#f5ad00"/><rect x="531" y="136" width="1" height="20" fill="#f5ad00"/>' +
       '<line x1="42" y1="277" x2="575" y2="277" stroke="#bec3c5"/>' +
@@ -324,6 +368,20 @@
     anchor.click();
     anchor.remove();
   }
+
+  document.getElementById('frontLogoUpload').addEventListener('change', event => {
+    readLogo(event.target.files[0], 'front'); event.target.value = '';
+  });
+  document.getElementById('backLogoUpload').addEventListener('change', event => {
+    readLogo(event.target.files[0], 'back'); event.target.value = '';
+  });
+  document.querySelectorAll('[data-logo-reset]').forEach(button => button.addEventListener('click', () => {
+    const side = button.dataset.logoReset;
+    customLogos[side] = '';
+    applyLogos();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(getData()));
+    showToast(`${side === 'front' ? '正面' : '背面'} Logo 已恢復預設`);
+  }));
 
   form.addEventListener('input', () => updatePreview(true));
   document.querySelectorAll('.side-button').forEach(button => button.addEventListener('click', () => switchSide(button.dataset.side)));
