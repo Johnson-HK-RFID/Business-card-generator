@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="270" viewBox="0 0 1200 270"><title>TRACI digital wordmark</title><g transform="translate(0 8)"><g id="traci-wordmark" fill="#0F2937">
 <path d="M20 20H245V69H160V235H105V69H20Z"/>
-<path fill-rule="evenodd" d="M260 20H475c58 0 91 28 91 76 0 42-24 68-69 77l81 62h-78L394 140v95h-54V96h136c24 0 36-9 36-27 0-17-12-25-36-25H260V20Z"/>
+<path fill-rule="evenodd" d="M260 20H475c58 0 91 28 91 76 0 42-24 68-69 77l81 62h-78L394 140h-79v95h-55V20Zm55 49v51h157c28 0 40-8 40-25 0-18-12-26-40-26H315Z"/>
 <path fill-rule="evenodd" d="M580 235 720 20h58l140 215h-66L749 76 646 235h-66Zm126 0 43-67 43 67h-86Z"/>
 <path d="M1100 20v49H984c-53 0-79 19-79 58s26 58 79 58h116v50H974c-83 0-127-38-127-108 0-69 44-107 127-107h126Z"/>
 <path d="M1120 20h58v215h-58Z"/>
