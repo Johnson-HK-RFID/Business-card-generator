@@ -2,12 +2,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <title>Embuilded app icon</title>
   <rect x="26" y="26" width="460" height="460" rx="72" fill="#0F2937"/>
-  <g id="embuilded-em-mark" fill="#F5B21B">
+  <g id="embuilded-em-mark" fill="#F5B218">
     <!-- Complete outer bracket, including the lower foot. -->
     <path d="M96 92H344V178H310V128H136V382H198V420H96Z"/>
     <!-- Geometric E. -->
     <path d="M174 178H292V220H224V258H283V299H224V341H296V382H174Z"/>
     <!-- Geometric lowercase m with two distinct arches. -->
-    <path d="M276 244h38v15c9-13 22-19 38-19 18 0 31 7 39 22 10-15 24-22 42-22 30 0 45 20 45 58v84h-42v-81c0-17-6-25-18-25-14 0-22 10-22 31v75h-42v-81c0-17-6-25-18-25-14 0-22 10-22 31v75h-42Z"/>
+    <path transform="translate(8)" d="M306 244h31v15c7-13 18-19 31-19 15 0 26 7 32 21 8-14 19-21 34-21 23 0 35 20 35 58v84h-33v-81c0-17-5-25-14-25-11 0-18 10-18 31v75h-33v-81c0-17-5-25-14-25-11 0-18 10-18 31v75h-33Z"/>
   </g>
 </svg>
