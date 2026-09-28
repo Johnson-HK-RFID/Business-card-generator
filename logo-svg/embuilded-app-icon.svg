@@ -7,7 +7,7 @@
     <path d="M96 92H344V178H310V128H136V382H198V420H96Z"/>
     <!-- Geometric E. -->
     <path d="M174 178H292V220H224V258H283V299H224V341H296V382H174Z"/>
-    <!-- Geometric lowercase m; path-based so no font is required. -->
-    <path d="M284 244H326V260c12-14 29-21 48-21 34 0 53 23 53 65v78h-46v-75c0-21-8-31-23-31-18 0-28 13-28 38v68h-46Z"/>
+    <!-- Geometric lowercase m with two distinct arches. -->
+    <path d="M276 244h38v15c9-13 22-19 38-19 18 0 31 7 39 22 10-15 24-22 42-22 30 0 45 20 45 58v84h-42v-81c0-17-6-25-18-25-14 0-22 10-22 31v75h-42v-81c0-17-6-25-18-25-14 0-22 10-22 31v75h-42Z"/>
   </g>
 </svg>

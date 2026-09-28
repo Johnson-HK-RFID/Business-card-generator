@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350"><title>TRACI horizontal lockup</title><g id="traci-wordmark" fill="#0F2937">
-<path d="M20 20H245V70H160V235H105V70H20Z"/>
-<path fill-rule="evenodd" d="M260 20H475c58 0 91 29 91 78 0 43-25 70-70 78l82 59h-79l-104-91v91h-55V100h139c22 0 33-10 33-29 0-17-12-26-35-26H260V20Z"/>
-<path fill-rule="evenodd" d="M580 235 720 20h58l140 215h-66L749 76 646 235h-66Zm126-20 43-69 43 69h-86Z"/>
-<path d="M1100 20v50H985c-54 0-80 19-80 58s26 57 80 57h115v50H974c-83 0-127-38-127-107 0-70 44-108 127-108h126Z"/>
+<path d="M20 20H245V69H160V235H105V69H20Z"/>
+<path fill-rule="evenodd" d="M260 20H475c58 0 91 28 91 76 0 42-24 68-69 77l81 62h-78L394 140v95h-54V96h136c24 0 36-9 36-27 0-17-12-25-36-25H260V20Z"/>
+<path fill-rule="evenodd" d="M580 235 720 20h58l140 215h-66L749 76 646 235h-66Zm126 0 43-67 43 67h-86Z"/>
+<path d="M1100 20v49H984c-53 0-79 19-79 58s26 58 79 58h116v50H974c-83 0-127-38-127-108 0-69 44-107 127-107h126Z"/>
 <path d="M1120 20h58v215h-58Z"/>
-<path fill="#F5B21B" d="m749 168 30 47h-60Z"/>
+<path fill="#F5B21B" d="m749 168 43 67h-86Z"/>
 </g><text x="600" y="315" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" letter-spacing="4" fill="#0F2937">TRACKING <tspan fill="#F5B21B">•</tspan> REPORTING <tspan fill="#F5B21B">•</tspan> ANALYSIS <tspan fill="#F5B21B">•</tspan> COMPLIANCE <tspan fill="#F5B21B">•</tspan> INTELLIGENCE</text></svg>
