@@ -34,27 +34,26 @@
 
   <!-- Embedded replaceable vector logo. -->
   <g id="brand-logo" aria-label="Replaceable Embuilded logo">
-    <svg x="76" y="60" width="295" height="261" viewBox="0 0 700 620"
+    <svg x="70" y="72" width="900" height="270" viewBox="0 0 1200 360"
          preserveAspectRatio="xMinYMin meet" overflow="visible">
-      <title>Embuilded stacked lockup</title>
-<style>text{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}.brand{font-weight:700}.tag{letter-spacing:5px}</style>
-<g transform="translate(80 35) scale(.82)"><path fill="#F5B218" d="M0 0h390v100h-45V45H45v285h75v45H0Z"/><path fill="#F5B218" d="M115 110h130v44h-78v38h70v42h-70v42h80v44H115Z"/><text x="258" y="320" font-size="170" font-weight="700" style="fill:#F5B218">m</text></g><text class="brand" x="83" y="535" font-size="142">builded</text>
+      <title>Embuilded horizontal lockup</title>
+<svg x="35" y="15" width="1130" height="330" viewBox="0 0 1568 440" preserveAspectRatio="xMidYMid meet"><g fill="#101820"><circle cx="960" cy="174" r="25"/><path d="M610 150h50v65c22-18 55-21 78-6 25 16 38 44 35 74-3 43-32 72-72 72-17 0-32-6-43-18v15h-48V150Zm50 128c0 25 14 40 34 40 21 0 34-16 34-40s-13-39-34-39c-20 0-34 15-34 39Z"/><path d="M781 206h48v82c0 20 8 30 24 30 18 0 27-12 27-35v-77h48v146h-46l-1-16c-12 13-29 19-49 19-34 0-51-22-51-64V206Z"/><path d="M939 206h46v146h-46V206Z"/><path d="M996 150h44v202h-44V150Z"/><path d="M1163 150h50v202h-47l-1-15c-12 12-28 18-46 18-42 0-70-31-70-77 0-45 28-75 69-75 18 0 33 5 45 16v-69Zm-67 128c0 24 14 40 34 40 21 0 34-16 34-40s-13-39-34-39c-20 0-34 15-34 39Z"/><path d="M1305 202c48 0 80 32 80 80v11h-110c4 19 16 29 34 29 14 0 25-6 32-18l37 20c-14 22-38 33-70 33-50 0-84-31-84-77 0-45 34-78 81-78Zm-30 60h61c-4-17-15-27-30-27-16 0-27 10-31 27Z"/><path d="M1509 150h50v202h-49l-1-15c-12 12-28 18-46 18-42 0-70-31-70-77 0-45 28-75 69-75 18 0 34 5 46 16l1-69Zm-68 128c0 24 14 40 34 40 21 0 34-16 34-40s-13-39-34-39c-20 0-34 15-34 39Z"/></g><g fill="#F5B218"><path d="M12 10H440v108q-25 10-50 0V59H60v311h79v48H12Z"/><path d="M176 136h153v44h-97v40h85v45h-85v43h98v44H176Z"/><path d="M345 206h51l1 16c11-13 26-20 45-20 21 0 36 8 45 24 12-16 29-24 50-24 38 0 57 25 57 75v75h-51v-79c0-23-8-34-23-34-17 0-25 13-25 39v74h-51v-79c0-23-8-34-23-34-17 0-25 13-25 39v74h-51V206Z"/></g></svg>
     </svg>
   </g>
 <g id="powered-lockup">
     <text id="powered-by-text" class="ui powered" x="174" y="376">POWERED BY</text>
     <!-- Embedded replaceable partner logo. -->
   <g id="partner-logo" aria-label="Replaceable TRACI logo">
-    <svg x="485" y="294" width="425" height="144" viewBox="0 0 1065 360"
+    <svg x="465" y="302" width="435" height="116" viewBox="0 0 1065 285"
          preserveAspectRatio="xMinYMin meet" overflow="visible">
-      <title>TRACI primary lockup</title><style>text{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}.tag{letter-spacing:3px}</style><g id="traci-wordmark" fill="#0F2937">
+      <title>TRACI horizontal lockup</title><style>text{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}.tag{letter-spacing:3px}</style><g id="traci-wordmark" fill="#0F2937">
 <path d="M18 14H223V59H146V191H92V59H18Z"/>
 <path fill-rule="evenodd" d="M237 14H367c54 0 83 22 83 59 0 32-22 53-65 60l53 58h-66l-56-59h-26v59h-53V91h130c16 0 25-6 25-16 0-11-9-16-25-16H237V14Z"/>
 <path d="M440 191 553 14h44l100 177h-61L573 78l-72 113Z"/>
 <path d="M922 14v45H807c-37 0-55 13-55 43s18 43 55 43h115v47H800c-68 0-102-30-102-90 0-59 34-88 102-88Z"/>
 <path d="M938 14h66v177h-66Z"/>
 <path fill="#F5B218" d="m573 125 37 66h-74Z"/>
-</g><g id="trademark" fill="#0F2937"><path d="M1015 14h16v4h-6v17h-4V18h-6Zm19 0h6l5 13 5-13h6v21h-4V21l-5 14h-4l-5-14v14h-4Z"/></g><text class="tag" x="532.5" y="260" text-anchor="middle" font-size="18">TRACKING <tspan fill="#F5B218">â€¢</tspan> REPORTING <tspan fill="#F5B218">â€¢</tspan></text><text class="tag" x="532.5" y="292" text-anchor="middle" font-size="18">ANALYSIS <tspan fill="#F5B218">â€¢</tspan> COMPLIANCE <tspan fill="#F5B218">â€¢</tspan></text><text class="tag" x="532.5" y="324" text-anchor="middle" font-size="18">INTELLIGENCE</text>
+</g><g id="trademark" fill="#0F2937"><path d="M1015 14h16v4h-6v17h-4V18h-6Zm19 0h6l5 13 5-13h6v21h-4V21l-5 14h-4l-5-14v14h-4Z"/></g><text class="tag" x="532.5" y="260" text-anchor="middle" font-size="17">TRACKING <tspan fill="#F5B218">â€¢</tspan> REPORTING <tspan fill="#F5B218">â€¢</tspan> ANALYSIS <tspan fill="#F5B218">â€¢</tspan> COMPLIANCE <tspan fill="#F5B218">â€¢</tspan> INTELLIGENCE</text>
     </svg>
   </g></g>
 

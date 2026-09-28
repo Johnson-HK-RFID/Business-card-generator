@@ -82,11 +82,16 @@ New-ServiceLabelVariant `
   -PartnerFile 'traci-digital-wordmark.svg' -PartnerViewBox '0 0 1065 220' -PartnerBox @(470, 315, 420, 87)
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable-building-horizontal.svg' `
-  -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
+  -OutputName 'service-label-editable-classic-horizontal.svg' `
+  -BrandFile 'embuilded-horizontal-lockup.svg' -BrandViewBox '0 0 1200 360' -BrandBox @(70, 72, 900, 270) `
   -PartnerFile 'traci-horizontal-lockup.svg' -PartnerViewBox '0 0 1065 285' -PartnerBox @(465, 302, 435, 116)
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable-stacked-primary.svg' `
-  -BrandFile 'embuilded-stacked-lockup.svg' -BrandViewBox '0 0 700 620' -BrandBox @(76, 60, 295, 261) `
-  -PartnerFile 'traci-primary-lockup.svg' -PartnerViewBox '0 0 1065 360' -PartnerBox @(485, 294, 425, 144)
+  -OutputName 'service-label-editable-building-digital.svg' `
+  -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
+  -PartnerFile 'traci-digital-wordmark.svg' -PartnerViewBox '0 0 1065 220' -PartnerBox @(470, 315, 420, 87)
+
+New-ServiceLabelVariant `
+  -OutputName 'service-label-editable-building-horizontal.svg' `
+  -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
+  -PartnerFile 'traci-horizontal-lockup.svg' -PartnerViewBox '0 0 1065 285' -PartnerBox @(465, 302, 435, 116)
