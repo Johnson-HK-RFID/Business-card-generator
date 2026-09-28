@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="270" viewBox="0 0 1200 270"><title>TRACI digital wordmark</title><g transform="translate(0 8)"><g id="traci-wordmark" fill="#0F2937">
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="270" viewBox="0 0 1240 270"><title>TRACI digital wordmark</title><g transform="translate(0 8)"><g id="traci-wordmark" fill="#0F2937">
 <path d="M20 20H245V69H160V235H105V69H20Z"/>
 <path fill-rule="evenodd" d="M260 20H475c58 0 91 28 91 76 0 42-24 68-69 77l81 62h-78L394 140h-79v95h-55V20Zm55 49v51h157c28 0 40-8 40-25 0-18-12-26-40-26H315Z"/>
 <path fill-rule="evenodd" d="M580 235 720 20h58l140 215h-66L749 76 646 235h-66Zm126 0 43-67 43 67h-86Z"/>
 <path d="M1100 20v49H984c-53 0-79 19-79 58s26 58 79 58h116v50H974c-83 0-127-38-127-108 0-69 44-107 127-107h126Z"/>
 <path d="M1120 20h58v215h-58Z"/>
-<path fill="#F5B21B" d="m749 168 43 67h-86Z"/>
-</g></g></svg>
+<path fill="#F5B218" d="m749 168 43 67h-86Z"/>
+</g>
+<g id="trademark" fill="#0F2937"><path d="M1186 20h14v4h-5v14h-4V24h-5Zm17 0h6l4 11 4-11h6v18h-4V26l-4 12h-4l-4-12v12h-4Z"/></g></g></svg>
