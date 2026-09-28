@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="400" viewBox="0 0 1400 400">
+  <title>TRACI circuit app icon lockup</title>
+  <g id="circuit-building-app-icon">
+    <rect x="18" y="18" width="364" height="364" rx="57" fill="#0F2937"/>
+    <g transform="translate(42 43) scale(1.264)">
+      <g id="building">
+        <path fill="#FFFFFF" d="M14 120 74 85v160H14Z"/>
+        <path fill="#FFFFFF" d="M89 48 169 5v240H89Z"/>
+        <path fill="#F5B218" d="M184 22 239 54v191h-55Z"/>
+      </g>
+      <g id="circuit" fill="none" stroke="#0F2937" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 218 126 174v-54h72V65"/>
+      </g>
+      <g id="nodes">
+        <circle cx="48" cy="218" r="15" fill="#0F2937"/>
+        <circle cx="48" cy="218" r="7" fill="#F5B218"/>
+        <circle cx="126" cy="120" r="15" fill="#0F2937"/>
+        <circle cx="126" cy="120" r="7" fill="#FFFFFF"/>
+        <circle cx="198" cy="65" r="15" fill="#0F2937"/>
+      </g>
+    </g>
+  </g>
+  <g id="traci-wordmark" transform="translate(405 92) scale(.91)" fill="#0F2937">
+    <path d="M18 14H223V59H146V191H92V59H18Z"/>
+    <path fill-rule="evenodd" d="M237 14H367c54 0 83 22 83 59 0 32-22 53-65 60l53 58h-66l-56-59h-26v59h-53V91h130c16 0 25-6 25-16 0-11-9-16-25-16H237V14Z"/>
+    <path d="M440 191 553 14h44l100 177h-61L573 78l-72 113Z"/>
+    <path d="M922 14v45H807c-37 0-55 13-55 43s18 43 55 43h115v47H800c-68 0-102-30-102-90 0-59 34-88 102-88Z"/>
+    <path d="M938 14h66v177h-66Z"/>
+    <path fill="#F5B218" d="m573 125 37 66h-74Z"/>
+    <g id="trademark"><path d="M1015 14h16v4h-6v17h-4V18h-6Zm19 0h6l5 13 5-13h6v21h-4V21l-5 14h-4l-5-14v14h-4Z"/></g>
+  </g>
+</svg>

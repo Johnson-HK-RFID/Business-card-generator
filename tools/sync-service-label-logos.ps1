@@ -3,7 +3,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$sourcePath = Join-Path $Workspace 'service-label-editable.svg'
+$outputDirectory = Join-Path $Workspace 'service-label-variants'
+$sourcePath = Join-Path $outputDirectory 'service-label-classic-traci.svg'
 $logoDirectory = Join-Path $Workspace 'logo-svg'
 $templateSvg = Get-Content -Raw -LiteralPath $sourcePath
 
@@ -72,26 +73,29 @@ function New-ServiceLabelVariant {
   )
   $svg = $svg -replace '<title>Editable EmbuilDed service label</title>', '<title>Editable Embuilded service label</title>'
   $svg = $svg -replace '#ffc400', '#F5B218'
-  $outputPath = Join-Path $Workspace $OutputName
+  if (-not (Test-Path -LiteralPath $outputDirectory)) {
+    New-Item -ItemType Directory -Path $outputDirectory | Out-Null
+  }
+  $outputPath = Join-Path $outputDirectory $OutputName
   [System.IO.File]::WriteAllText($outputPath, $svg, [System.Text.UTF8Encoding]::new($false))
 }
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable.svg' `
+  -OutputName 'service-label-classic-traci.svg' `
   -BrandFile 'embuilded-horizontal-lockup.svg' -BrandViewBox '0 0 1200 360' -BrandBox @(70, 72, 900, 270) `
   -PartnerFile 'traci-digital-wordmark.svg' -PartnerViewBox '0 0 1065 220' -PartnerBox @(470, 315, 420, 87)
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable-classic-horizontal.svg' `
+  -OutputName 'service-label-classic-traci-circuit.svg' `
   -BrandFile 'embuilded-horizontal-lockup.svg' -BrandViewBox '0 0 1200 360' -BrandBox @(70, 72, 900, 270) `
-  -PartnerFile 'traci-horizontal-lockup.svg' -PartnerViewBox '0 0 1065 285' -PartnerBox @(465, 302, 435, 116)
+  -PartnerFile 'traci-circuit-lockup.svg' -PartnerViewBox '0 0 1400 400' -PartnerBox @(520, 300, 390, 111)
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable-building-digital.svg' `
+  -OutputName 'service-label-building-traci.svg' `
   -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
   -PartnerFile 'traci-digital-wordmark.svg' -PartnerViewBox '0 0 1065 220' -PartnerBox @(470, 315, 420, 87)
 
 New-ServiceLabelVariant `
-  -OutputName 'service-label-editable-building-horizontal.svg' `
+  -OutputName 'service-label-building-traci-circuit.svg' `
   -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
-  -PartnerFile 'traci-horizontal-lockup.svg' -PartnerViewBox '0 0 1065 285' -PartnerBox @(465, 302, 435, 116)
+  -PartnerFile 'traci-circuit-lockup.svg' -PartnerViewBox '0 0 1400 400' -PartnerBox @(520, 300, 390, 111)
