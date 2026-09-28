@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330">
-<title>TRACI horizontal lockup</title>
-<style>text{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}.brand{font-weight:700}.tag{letter-spacing:5px}</style>
-<svg x="70" y="25" width="1060" height="230" viewBox="0 0 1592 315" preserveAspectRatio="xMidYMid meet"><g fill="#101820">
-    <path d="M79 10H324V40H220V208H182V40H79Z"/>
-    <path d="M379 10H548c43 0 68 20 68 54 0 39-29 59-82 59h-31l109 85h-64l-108-96c-8-7-4-17 8-17h88c27 0 40-10 40-30 0-17-13-25-40-25H379V10Zm0 85h37v113h-37V95Z"/>
-    <path d="M1278 10v30h-101c-87 0-130 23-130 69 0 47 43 69 130 69h101v30h-106c-109 0-163-33-163-99 0-66 54-99 163-99h106Z"/>
-    <path d="M1365 10h44v198h-44Z"/>
-  </g>
-  <g fill="#F7AD00">
-    <path d="M644 208 785 27Q800 7 819 8q22 1 24 20 1 10-8 22L704 208Z"/>
-    <path d="M844 42q9-12 20 1l117 165h-61l-87-121q-15-22 11-45Z"/>
-    <rect x="786" y="156" width="52" height="52" rx="4"/>
-  </g></svg><text class="tag" x="600" y="300" text-anchor="middle" font-size="18">TRACKING <tspan fill="#F5B21B">•</tspan> REPORTING <tspan fill="#F5B21B">•</tspan> ANALYSIS <tspan fill="#F5B21B">•</tspan> COMPLIANCE <tspan fill="#F5B21B">•</tspan> INTELLIGENCE</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350"><title>TRACI horizontal lockup</title><g id="traci-wordmark" fill="#0F2937">
+<path d="M20 20H245V70H160V235H105V70H20Z"/>
+<path fill-rule="evenodd" d="M260 20H475c58 0 91 29 91 78 0 43-25 70-70 78l82 59h-79l-104-91v91h-55V100h139c22 0 33-10 33-29 0-17-12-26-35-26H260V20Z"/>
+<path fill-rule="evenodd" d="M580 235 720 20h58l140 215h-66L749 76 646 235h-66Zm126-20 43-69 43 69h-86Z"/>
+<path d="M1100 20v50H985c-54 0-80 19-80 58s26 57 80 57h115v50H974c-83 0-127-38-127-107 0-70 44-108 127-108h126Z"/>
+<path d="M1120 20h58v215h-58Z"/>
+<path fill="#F5B21B" d="m749 168 30 47h-60Z"/>
+</g><text x="600" y="315" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" letter-spacing="4" fill="#0F2937">TRACKING <tspan fill="#F5B21B">•</tspan> REPORTING <tspan fill="#F5B21B">•</tspan> ANALYSIS <tspan fill="#F5B21B">•</tspan> COMPLIANCE <tspan fill="#F5B21B">•</tspan> INTELLIGENCE</text></svg>
