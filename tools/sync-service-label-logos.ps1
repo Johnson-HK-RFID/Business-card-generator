@@ -45,6 +45,7 @@ function New-ServiceLabelVariant {
     [string]$OutputName,
     [string]$DestinationDirectory = '',
     [string]$DocumentTitle = 'Editable Embuilded service label',
+    [switch]$HidePoweredLockup,
     [string]$BrandLabel = 'Replaceable Embuilded logo',
     [string]$BrandFile,
     [string]$BrandViewBox,
@@ -69,6 +70,14 @@ function New-ServiceLabelVariant {
     "  <!-- Embedded replaceable vector logo. -->`r`n$brand`r`n",
     1
   )
+  if ($HidePoweredLockup) {
+    $svg = [regex]::Replace(
+      $svg,
+      '(?s)\s*<g id="powered-lockup">.*?</g>\s*(?=\s*<!-- Embedded, scannable vector QR)',
+      "`r`n`r`n",
+      1
+    )
+  }
   $svg = [regex]::Replace(
     $svg,
     '(?s)    <!-- Embedded replaceable partner logo\. -->\s*(?:<svg id="partner-logo".*?</svg>|<g id="partner-logo".*?</g>\s*(?=</g>))',
@@ -126,6 +135,26 @@ New-ServiceLabelVariant `
   -BrandFile 'traci-digital-wordmark.svg' -BrandViewBox '0 0 1065 220' -BrandBox @(72, 92, 890, 184) `
   -PartnerLabel 'Replaceable Building Embuilded powered-by logo' `
   -PartnerFile 'building-embuilded-horizontal.svg' -PartnerViewBox '0 0 1300 390' -PartnerBox @(515, 297, 400, 120)
+
+$traciOnlyDirectory = Join-Path $outputDirectory 'traci-only'
+
+New-ServiceLabelVariant `
+  -DestinationDirectory $traciOnlyDirectory `
+  -OutputName 'traci-digital-only.svg' `
+  -DocumentTitle 'Editable TRACI-only service label' `
+  -HidePoweredLockup `
+  -BrandLabel 'Replaceable TRACI product logo' `
+  -BrandFile 'traci-digital-wordmark.svg' -BrandViewBox '0 0 1065 220' -BrandBox @(72, 115, 890, 184) `
+  -PartnerFile 'embuilded-horizontal-lockup.svg' -PartnerViewBox '0 0 1200 360' -PartnerBox @(520, 300, 390, 117)
+
+New-ServiceLabelVariant `
+  -DestinationDirectory $traciOnlyDirectory `
+  -OutputName 'traci-circuit-only.svg' `
+  -DocumentTitle 'Editable circuit TRACI-only service label' `
+  -HidePoweredLockup `
+  -BrandLabel 'Replaceable circuit TRACI product logo' `
+  -BrandFile 'traci-circuit-lockup.svg' -BrandViewBox '0 0 1400 400' -BrandBox @(65, 76, 900, 257) `
+  -PartnerFile 'embuilded-horizontal-lockup.svg' -PartnerViewBox '0 0 1200 360' -PartnerBox @(520, 300, 390, 117)
 
 New-ServiceLabelVariant `
   -DestinationDirectory $poweredDirectory `
