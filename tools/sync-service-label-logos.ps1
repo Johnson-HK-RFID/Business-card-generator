@@ -43,19 +43,22 @@ function New-NestedLogo {
 function New-ServiceLabelVariant {
   param(
     [string]$OutputName,
+    [string]$DocumentTitle = 'Editable Embuilded service label',
+    [string]$BrandLabel = 'Replaceable Embuilded logo',
     [string]$BrandFile,
     [string]$BrandViewBox,
     [int[]]$BrandBox,
+    [string]$PartnerLabel = 'Replaceable TRACI logo',
     [string]$PartnerFile,
     [string]$PartnerViewBox,
     [int[]]$PartnerBox
   )
 
   $svg = $templateSvg
-  $brand = New-NestedLogo -Id 'brand-logo' -Label 'Replaceable Embuilded logo' `
+  $brand = New-NestedLogo -Id 'brand-logo' -Label $BrandLabel `
     -LogoPath (Join-Path $logoDirectory $BrandFile) -ViewBox $BrandViewBox `
     -X $BrandBox[0] -Y $BrandBox[1] -Width $BrandBox[2] -Height $BrandBox[3]
-  $partner = New-NestedLogo -Id 'partner-logo' -Label 'Replaceable TRACI logo' `
+  $partner = New-NestedLogo -Id 'partner-logo' -Label $PartnerLabel `
     -LogoPath (Join-Path $logoDirectory $PartnerFile) -ViewBox $PartnerViewBox `
     -X $PartnerBox[0] -Y $PartnerBox[1] -Width $PartnerBox[2] -Height $PartnerBox[3]
 
@@ -71,7 +74,7 @@ function New-ServiceLabelVariant {
     "    <!-- Embedded replaceable partner logo. -->`r`n$partner",
     1
   )
-  $svg = $svg -replace '<title>Editable EmbuilDed service label</title>', '<title>Editable Embuilded service label</title>'
+  $svg = $svg -replace '<title>Editable (?:EmbuilDed|Embuilded|TRACI) service label</title>', "<title>$DocumentTitle</title>"
   $svg = $svg -replace '#ffc400', '#F5B218'
   if (-not (Test-Path -LiteralPath $outputDirectory)) {
     New-Item -ItemType Directory -Path $outputDirectory | Out-Null
@@ -99,3 +102,11 @@ New-ServiceLabelVariant `
   -OutputName 'service-label-building-traci-circuit.svg' `
   -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
   -PartnerFile 'traci-circuit-lockup.svg' -PartnerViewBox '0 0 1400 400' -PartnerBox @(520, 300, 390, 111)
+
+New-ServiceLabelVariant `
+  -OutputName 'service-label-traci-powered-by-embuilded.svg' `
+  -DocumentTitle 'Editable TRACI service label' `
+  -BrandLabel 'Replaceable TRACI product logo' `
+  -BrandFile 'traci-digital-wordmark.svg' -BrandViewBox '0 0 1065 220' -BrandBox @(72, 92, 890, 184) `
+  -PartnerLabel 'Replaceable Embuilded powered-by logo' `
+  -PartnerFile 'embuilded-horizontal-lockup.svg' -PartnerViewBox '0 0 1200 360' -PartnerBox @(520, 300, 390, 117)
