@@ -43,6 +43,7 @@ function New-NestedLogo {
 function New-ServiceLabelVariant {
   param(
     [string]$OutputName,
+    [string]$DestinationDirectory = '',
     [string]$DocumentTitle = 'Editable Embuilded service label',
     [string]$BrandLabel = 'Replaceable Embuilded logo',
     [string]$BrandFile,
@@ -76,10 +77,13 @@ function New-ServiceLabelVariant {
   )
   $svg = $svg -replace '<title>Editable (?:EmbuilDed|Embuilded|TRACI) service label</title>', "<title>$DocumentTitle</title>"
   $svg = $svg -replace '#ffc400', '#F5B218'
-  if (-not (Test-Path -LiteralPath $outputDirectory)) {
-    New-Item -ItemType Directory -Path $outputDirectory | Out-Null
+  if ([string]::IsNullOrWhiteSpace($DestinationDirectory)) {
+    $DestinationDirectory = $outputDirectory
   }
-  $outputPath = Join-Path $outputDirectory $OutputName
+  if (-not (Test-Path -LiteralPath $DestinationDirectory)) {
+    New-Item -ItemType Directory -Path $DestinationDirectory | Out-Null
+  }
+  $outputPath = Join-Path $DestinationDirectory $OutputName
   [System.IO.File]::WriteAllText($outputPath, $svg, [System.Text.UTF8Encoding]::new($false))
 }
 
@@ -103,10 +107,40 @@ New-ServiceLabelVariant `
   -BrandFile 'building-embuilded-horizontal.svg' -BrandViewBox '0 0 1300 390' -BrandBox @(62, 63, 910, 273) `
   -PartnerFile 'traci-circuit-lockup.svg' -PartnerViewBox '0 0 1400 400' -PartnerBox @(520, 300, 390, 111)
 
+$poweredDirectory = Join-Path $outputDirectory 'traci-powered-by-embuilded'
+
 New-ServiceLabelVariant `
-  -OutputName 'service-label-traci-powered-by-embuilded.svg' `
+  -DestinationDirectory $poweredDirectory `
+  -OutputName 'traci-digital-powered-by-embuilded-classic.svg' `
   -DocumentTitle 'Editable TRACI service label' `
   -BrandLabel 'Replaceable TRACI product logo' `
   -BrandFile 'traci-digital-wordmark.svg' -BrandViewBox '0 0 1065 220' -BrandBox @(72, 92, 890, 184) `
   -PartnerLabel 'Replaceable Embuilded powered-by logo' `
   -PartnerFile 'embuilded-horizontal-lockup.svg' -PartnerViewBox '0 0 1200 360' -PartnerBox @(520, 300, 390, 117)
+
+New-ServiceLabelVariant `
+  -DestinationDirectory $poweredDirectory `
+  -OutputName 'traci-digital-powered-by-embuilded-building.svg' `
+  -DocumentTitle 'Editable TRACI service label' `
+  -BrandLabel 'Replaceable TRACI product logo' `
+  -BrandFile 'traci-digital-wordmark.svg' -BrandViewBox '0 0 1065 220' -BrandBox @(72, 92, 890, 184) `
+  -PartnerLabel 'Replaceable Building Embuilded powered-by logo' `
+  -PartnerFile 'building-embuilded-horizontal.svg' -PartnerViewBox '0 0 1300 390' -PartnerBox @(515, 297, 400, 120)
+
+New-ServiceLabelVariant `
+  -DestinationDirectory $poweredDirectory `
+  -OutputName 'traci-circuit-powered-by-embuilded-classic.svg' `
+  -DocumentTitle 'Editable circuit TRACI service label' `
+  -BrandLabel 'Replaceable circuit TRACI product logo' `
+  -BrandFile 'traci-circuit-lockup.svg' -BrandViewBox '0 0 1400 400' -BrandBox @(65, 70, 900, 257) `
+  -PartnerLabel 'Replaceable Embuilded powered-by logo' `
+  -PartnerFile 'embuilded-horizontal-lockup.svg' -PartnerViewBox '0 0 1200 360' -PartnerBox @(520, 300, 390, 117)
+
+New-ServiceLabelVariant `
+  -DestinationDirectory $poweredDirectory `
+  -OutputName 'traci-circuit-powered-by-embuilded-building.svg' `
+  -DocumentTitle 'Editable circuit TRACI service label' `
+  -BrandLabel 'Replaceable circuit TRACI product logo' `
+  -BrandFile 'traci-circuit-lockup.svg' -BrandViewBox '0 0 1400 400' -BrandBox @(65, 70, 900, 257) `
+  -PartnerLabel 'Replaceable Building Embuilded powered-by logo' `
+  -PartnerFile 'building-embuilded-horizontal.svg' -PartnerViewBox '0 0 1300 390' -PartnerBox @(515, 297, 400, 120)
