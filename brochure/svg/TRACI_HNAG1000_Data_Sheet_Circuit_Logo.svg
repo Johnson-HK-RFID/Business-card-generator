@@ -1,9 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-label="HNAG1000 data sheet with TRACI circuit logo">
 <title>HNAG1000-4-STX Portable Online Four Gas Detector — TRACI circuit logo</title>
-<desc>Editable vector data sheet. Replace the image element with id replaceable-traci-logo to change the logo.</desc>
+<desc>Editable vector data sheet. The TRACI logo is embedded as native vector paths in the group replaceable-traci-logo.</desc>
 <style>.body{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}.heading{font-family:Arial,Helvetica,sans-serif;fill:#0F2937;font-weight:700}.amber{fill:#F5B218}</style>
 <rect width="1600" height="1100" fill="#fff"/><rect width="1600" height="18" fill="#F5B218"/>
-<image id="replaceable-traci-logo" x="70" y="48" width="510" height="145" preserveAspectRatio="xMinYMid meet" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDE0MDAgNDAwIj4KICA8dGl0bGU+VFJBQ0kgY2lyY3VpdCBhcHAgaWNvbiBsb2NrdXA8L3RpdGxlPgogIDxnIGlkPSJjaXJjdWl0LWJ1aWxkaW5nLWFwcC1pY29uIj4KICAgIDxyZWN0IHg9IjE4IiB5PSIxOCIgd2lkdGg9IjM2NCIgaGVpZ2h0PSIzNjQiIHJ4PSI1NyIgZmlsbD0iIzBGMjkzNyIvPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDIgNDMpIHNjYWxlKDEuMjY0KSI+CiAgICAgIDxnIGlkPSJidWlsZGluZyI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE0IDEyMCA3NCA4NXYxNjBIMTRaIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTg5IDQ4IDE2OSA1djI0MEg4OVoiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjRjVCMjE4IiBkPSJNMTg0IDIyIDIzOSA1NHYxOTFoLTU1WiIvPgogICAgICA8L2c+CiAgICAgIDxnIGlkPSJjaXJjdWl0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwRjI5MzciIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICAgICAgPHBhdGggZD0iTTQ4IDIxOCAxMjYgMTc0di01NGg3MlY2NSIvPgogICAgICA8L2c+CiAgICAgIDxnIGlkPSJub2RlcyI+CiAgICAgICAgPGNpcmNsZSBjeD0iNDgiIGN5PSIyMTgiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iNDgiIGN5PSIyMTgiIHI9IjciIGZpbGw9IiNGNUIyMTgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMjYiIGN5PSIxMjAiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iMTIwIiByPSI3IiBmaWxsPSIjRkZGRkZGIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTk4IiBjeT0iNjUiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+CiAgPGcgaWQ9InRyYWNpLXdvcmRtYXJrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDUgOTIpIHNjYWxlKC45MSkiIGZpbGw9IiMwRjI5MzciPgogICAgPHBhdGggZD0iTTE4IDE0SDIyM1Y1OUgxNDZWMTkxSDkyVjU5SDE4WiIvPgogICAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMjM3IDE0SDM2N2M1NCAwIDgzIDIyIDgzIDU5IDAgMzItMjIgNTMtNjUgNjBsNTMgNThoLTY2bC01Ni01OWgtMjZ2NTloLTUzVjkxaDEzMGMxNiAwIDI1LTYgMjUtMTYgMC0xMS05LTE2LTI1LTE2SDIzN1YxNFoiLz4KICAgIDxwYXRoIGQ9Ik00NDAgMTkxIDU1MyAxNGg0NGwxMDAgMTc3aC02MUw1NzMgNzhsLTcyIDExM1oiLz4KICAgIDxwYXRoIGQ9Ik05MjIgMTR2NDVIODA3Yy0zNyAwLTU1IDEzLTU1IDQzczE4IDQzIDU1IDQzaDExNXY0N0g4MDBjLTY4IDAtMTAyLTMwLTEwMi05MCAwLTU5IDM0LTg4IDEwMi04OFoiLz4KICAgIDxwYXRoIGQ9Ik05MzggMTRoNjZ2MTc3aC02NloiLz4KICAgIDxwYXRoIGZpbGw9IiNGNUIyMTgiIGQ9Im01NzMgMTI1IDM3IDY2aC03NFoiLz4KICAgIDxnIGlkPSJ0cmFkZW1hcmsiPjxwYXRoIGQ9Ik0xMDE1IDE0aDE2djRoLTZ2MTdoLTRWMThoLTZabTE5IDBoNmw1IDEzIDUtMTNoNnYyMWgtNFYyMWwtNSAxNGgtNGwtNS0xNHYxNGgtNFoiLz48L2c+CiAgPC9nPgo8L3N2Zz4K" xlink:href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDE0MDAgNDAwIj4KICA8dGl0bGU+VFJBQ0kgY2lyY3VpdCBhcHAgaWNvbiBsb2NrdXA8L3RpdGxlPgogIDxnIGlkPSJjaXJjdWl0LWJ1aWxkaW5nLWFwcC1pY29uIj4KICAgIDxyZWN0IHg9IjE4IiB5PSIxOCIgd2lkdGg9IjM2NCIgaGVpZ2h0PSIzNjQiIHJ4PSI1NyIgZmlsbD0iIzBGMjkzNyIvPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDIgNDMpIHNjYWxlKDEuMjY0KSI+CiAgICAgIDxnIGlkPSJidWlsZGluZyI+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE0IDEyMCA3NCA4NXYxNjBIMTRaIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTg5IDQ4IDE2OSA1djI0MEg4OVoiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjRjVCMjE4IiBkPSJNMTg0IDIyIDIzOSA1NHYxOTFoLTU1WiIvPgogICAgICA8L2c+CiAgICAgIDxnIGlkPSJjaXJjdWl0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwRjI5MzciIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICAgICAgPHBhdGggZD0iTTQ4IDIxOCAxMjYgMTc0di01NGg3MlY2NSIvPgogICAgICA8L2c+CiAgICAgIDxnIGlkPSJub2RlcyI+CiAgICAgICAgPGNpcmNsZSBjeD0iNDgiIGN5PSIyMTgiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iNDgiIGN5PSIyMTgiIHI9IjciIGZpbGw9IiNGNUIyMTgiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIxMjYiIGN5PSIxMjAiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iMTIwIiByPSI3IiBmaWxsPSIjRkZGRkZGIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTk4IiBjeT0iNjUiIHI9IjE1IiBmaWxsPSIjMEYyOTM3Ii8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+CiAgPGcgaWQ9InRyYWNpLXdvcmRtYXJrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDUgOTIpIHNjYWxlKC45MSkiIGZpbGw9IiMwRjI5MzciPgogICAgPHBhdGggZD0iTTE4IDE0SDIyM1Y1OUgxNDZWMTkxSDkyVjU5SDE4WiIvPgogICAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMjM3IDE0SDM2N2M1NCAwIDgzIDIyIDgzIDU5IDAgMzItMjIgNTMtNjUgNjBsNTMgNThoLTY2bC01Ni01OWgtMjZ2NTloLTUzVjkxaDEzMGMxNiAwIDI1LTYgMjUtMTYgMC0xMS05LTE2LTI1LTE2SDIzN1YxNFoiLz4KICAgIDxwYXRoIGQ9Ik00NDAgMTkxIDU1MyAxNGg0NGwxMDAgMTc3aC02MUw1NzMgNzhsLTcyIDExM1oiLz4KICAgIDxwYXRoIGQ9Ik05MjIgMTR2NDVIODA3Yy0zNyAwLTU1IDEzLTU1IDQzczE4IDQzIDU1IDQzaDExNXY0N0g4MDBjLTY4IDAtMTAyLTMwLTEwMi05MCAwLTU5IDM0LTg4IDEwMi04OFoiLz4KICAgIDxwYXRoIGQ9Ik05MzggMTRoNjZ2MTc3aC02NloiLz4KICAgIDxwYXRoIGZpbGw9IiNGNUIyMTgiIGQ9Im01NzMgMTI1IDM3IDY2aC03NFoiLz4KICAgIDxnIGlkPSJ0cmFkZW1hcmsiPjxwYXRoIGQ9Ik0xMDE1IDE0aDE2djRoLTZ2MTdoLTRWMThoLTZabTE5IDBoNmw1IDEzIDUtMTNoNnYyMWgtNFYyMWwtNSAxNGgtNGwtNS0xNHYxNGgtNFoiLz48L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+<g id="replaceable-traci-logo" transform="translate(71.250 48.000) scale(0.362500)">
+  
+  <g id="circuit-building-app-icon">
+    <rect x="18" y="18" width="364" height="364" rx="57" fill="#0F2937"/>
+    <g transform="translate(42 43) scale(1.264)">
+      <g id="building">
+        <path fill="#FFFFFF" d="M14 120 74 85v160H14Z"/>
+        <path fill="#FFFFFF" d="M89 48 169 5v240H89Z"/>
+        <path fill="#F5B218" d="M184 22 239 54v191h-55Z"/>
+      </g>
+      <g id="circuit" fill="none" stroke="#0F2937" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 218 126 174v-54h72V65"/>
+      </g>
+      <g id="nodes">
+        <circle cx="48" cy="218" r="15" fill="#0F2937"/>
+        <circle cx="48" cy="218" r="7" fill="#F5B218"/>
+        <circle cx="126" cy="120" r="15" fill="#0F2937"/>
+        <circle cx="126" cy="120" r="7" fill="#FFFFFF"/>
+        <circle cx="198" cy="65" r="15" fill="#0F2937"/>
+      </g>
+    </g>
+  </g>
+  <g id="traci-wordmark" transform="translate(405 92) scale(.91)" fill="#0F2937">
+    <path d="M18 14H223V59H146V191H92V59H18Z"/>
+    <path fill-rule="evenodd" d="M237 14H367c54 0 83 22 83 59 0 32-22 53-65 60l53 58h-66l-56-59h-26v59h-53V91h130c16 0 25-6 25-16 0-11-9-16-25-16H237V14Z"/>
+    <path d="M440 191 553 14h44l100 177h-61L573 78l-72 113Z"/>
+    <path d="M922 14v45H807c-37 0-55 13-55 43s18 43 55 43h115v47H800c-68 0-102-30-102-90 0-59 34-88 102-88Z"/>
+    <path d="M938 14h66v177h-66Z"/>
+    <path fill="#F5B218" d="m573 125 37 66h-74Z"/>
+    <g id="trademark"><path d="M1015 14h16v4h-6v17h-4V18h-6Zm19 0h6l5 13 5-13h6v21h-4V21l-5 14h-4l-5-14v14h-4Z"/></g>
+  </g>
+</g>
 <text x="1530" y="70" text-anchor="end" class="body" font-size="18" font-weight="700">PRODUCT DATA SHEET</text><text x="1530" y="98" text-anchor="end" class="body" font-size="21" font-weight="700">HNAG1000-4-STX</text>
 <line x1="70" y1="210" x2="1530" y2="210" stroke="#0F2937" stroke-width="2"/>
 <text x="70" y="266" class="heading" font-size="43">Portable Online Four Gas Detector</text><text x="72" y="301" class="body" font-size="20">Continuous monitoring of combustible gas, oxygen, carbon monoxide and hydrogen sulfide</text>

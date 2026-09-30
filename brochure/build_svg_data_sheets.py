@@ -1,6 +1,7 @@
 from base64 import b64encode
 from html import escape
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "brochure" / "svg"
@@ -8,6 +9,18 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 def uri(path, mime):
     return f"data:{mime};base64,{b64encode(Path(path).read_bytes()).decode()}"
+
+def inline_logo(path, x=70, y=48, width=510, height=145):
+    source = Path(path).read_text(encoding="utf-8")
+    match = re.search(r'<svg[^>]*viewBox="([^"]+)"[^>]*>(.*)</svg>', source, re.S)
+    if not match:
+        raise ValueError(f"Invalid SVG logo: {path}")
+    _, _, source_width, source_height = map(float, match.group(1).split())
+    scale = min(width / source_width, height / source_height)
+    offset_x = x + (width - source_width * scale) / 2
+    offset_y = y + (height - source_height * scale) / 2
+    content = re.sub(r'<title>.*?</title>', '', match.group(2), flags=re.S)
+    return f'<g id="replaceable-traci-logo" transform="translate({offset_x:.3f} {offset_y:.3f}) scale({scale:.6f})">{content}</g>'
 
 product = uri(ROOT / "brochure/assets/gas-detector-configurations.jpg", "image/jpeg")
 variants = {
@@ -26,7 +39,7 @@ specs = [
 ]
 
 def build(logo_path, label):
-    logo = uri(logo_path, "image/svg+xml")
+    logo = inline_logo(logo_path)
     rows=[]
     for i,row in enumerate(specs):
         y=669+i*45
@@ -35,10 +48,10 @@ def build(logo_path, label):
             rows.append(f'<text x="{x}" y="{y+29}" class="body" font-size="{16 if bold else 15}" font-weight="{700 if bold else 400}">{val}</text>')
     return f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-label="HNAG1000 data sheet with {escape(label)}">
 <title>HNAG1000-4-STX Portable Online Four Gas Detector — {escape(label)}</title>
-<desc>Editable vector data sheet. Replace the image element with id replaceable-traci-logo to change the logo.</desc>
+<desc>Editable vector data sheet. The TRACI logo is embedded as native vector paths in the group replaceable-traci-logo.</desc>
 <style>.body{{font-family:Arial,Helvetica,sans-serif;fill:#0F2937}}.heading{{font-family:Arial,Helvetica,sans-serif;fill:#0F2937;font-weight:700}}.amber{{fill:#F5B218}}</style>
 <rect width="1600" height="1100" fill="#fff"/><rect width="1600" height="18" fill="#F5B218"/>
-<image id="replaceable-traci-logo" x="70" y="48" width="510" height="145" preserveAspectRatio="xMinYMid meet" href="{logo}" xlink:href="{logo}"/>
+{logo}
 <text x="1530" y="70" text-anchor="end" class="body" font-size="18" font-weight="700">PRODUCT DATA SHEET</text><text x="1530" y="98" text-anchor="end" class="body" font-size="21" font-weight="700">HNAG1000-4-STX</text>
 <line x1="70" y1="210" x2="1530" y2="210" stroke="#0F2937" stroke-width="2"/>
 <text x="70" y="266" class="heading" font-size="43">Portable Online Four Gas Detector</text><text x="72" y="301" class="body" font-size="20">Continuous monitoring of combustible gas, oxygen, carbon monoxide and hydrogen sulfide</text>
