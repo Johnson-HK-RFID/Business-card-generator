@@ -10,7 +10,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 def uri(path, mime):
     return f"data:{mime};base64,{b64encode(Path(path).read_bytes()).decode()}"
 
-def inline_logo(path, x, y, width, height):
+def inline_svg(path, x, y, width, height, group_id):
     source = Path(path).read_text(encoding="utf-8")
     match = re.search(r'<svg[^>]*viewBox="([^"]+)"[^>]*>(.*)</svg>', source, re.S)
     if not match:
@@ -20,9 +20,9 @@ def inline_logo(path, x, y, width, height):
     tx = x + (width - sw * scale) / 2
     ty = y + (height - sh * scale) / 2
     content = re.sub(r'<title>.*?</title>', '', match.group(2), flags=re.S)
-    return f'<g id="replaceable-traci-logo" transform="translate({tx:.3f} {ty:.3f}) scale({scale:.6f})">{content}</g>'
+    return f'<g id="{group_id}" transform="translate({tx:.3f} {ty:.3f}) scale({scale:.6f})">{content}</g>'
 
-PRODUCT = uri(ROOT / "brochure/assets/gas-detector-configurations.jpg", "image/jpeg")
+PRODUCT_ART = inline_svg(ROOT / "brochure/assets/gas-detector-pair-clean.svg", 95, 350, 1050, 455, "replaceable-product-pair")
 VARIANTS = {
     "TRACI_HNAG1000_Data_Sheet_Portrait_Wordmark.svg": (ROOT / "logo-svg/traci-digital-wordmark.svg", "TRACI wordmark"),
     "TRACI_HNAG1000_Data_Sheet_Portrait_Circuit_Logo.svg": (ROOT / "logo-svg/traci-circuit-lockup.svg", "TRACI circuit logo"),
@@ -43,7 +43,7 @@ specs = [
 ]
 
 def build(logo_path, label):
-    logo = inline_logo(logo_path, 62, 42, 510, 150)
+    logo = inline_svg(logo_path, 62, 42, 510, 150, "replaceable-traci-logo")
     rows=[]
     for i,(name,value) in enumerate(specs):
         y=1048+i*48
@@ -63,11 +63,7 @@ def build(logo_path, label):
 <text x="62" y="272" class="heading" font-size="43">Portable Online Four Gas Detector</text>
 <text x="64" y="309" class="body" font-size="19">Continuous monitoring of EX, O2, CO and H2S</text>
 
-<g id="product-image-with-label-masks">
-  <defs><clipPath id="clean-product-clips"><path d="M175 345H520V825H175Z M720 345H1085V825H720Z"/></clipPath></defs>
-  <!-- Two clean crop windows retain both devices while excluding the Chinese annotations. -->
-  <image x="95" y="345" width="1050" height="480" preserveAspectRatio="xMidYMid meet" clip-path="url(#clean-product-clips)" href="{PRODUCT}" xlink:href="{PRODUCT}"/>
-</g>
+{PRODUCT_ART}
 
 <rect x="62" y="846" width="1116" height="154" rx="7" fill="#EEF2F4"/>
 <text x="94" y="892" class="heading amber" font-size="20">24-HOUR CONNECTED MONITORING</text>
