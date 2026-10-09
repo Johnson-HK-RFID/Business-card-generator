@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <title>Embuilded building horizontal lockup refined</title>
+  <g id="building-mark-refined" transform="translate(8 5) scale(1.38)">
+    <path fill="#0F2937" d="M0 104 44 78V210H0Z"/>
+    <path fill="#0F2937" d="M56 40 142 0V48L98 69V210H56Z"/>
+    <path fill="#0F2937" d="M109 82 142 66V210H109Z"/>
+    <path fill="#F5B218" d="M154 20 218 54V99L154 66Z"/>
+    <path fill="#F5B218" d="M154 82 218 116V159L154 127Z"/>
+    <path fill="#F5B218" d="M154 144 218 178V210H154Z"/>
+  </g>
+  <text x="337" y="190" fill="#0F2937" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="132" font-weight="900">Embuilded</text>
+  <text x="342" y="250" fill="#0F2937" font-family="Arial, Helvetica, sans-serif" font-size="34" letter-spacing="2">Embedded intelligence for the built world.</text>
+</svg>
