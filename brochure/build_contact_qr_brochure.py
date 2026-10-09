@@ -3,7 +3,7 @@ import re
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / "brochure/svg/TRACI_HNAG1000_Data_Sheet_Master_2026-10.svg"
-QR = ROOT / "brochure/assets/website-qr-code.svg"
+QR = ROOT / "brochure/assets/product-page-qr-code.svg"
 BRAND = ROOT / "logo-svg/building-embuilded-horizontal-refined.svg"
 OUT = ROOT / "brochure/svg/TRACI_HNAG1000_Data_Sheet_Contact_QR.svg"
 
@@ -23,7 +23,7 @@ svg = BASE.read_text(encoding="utf-8")
 svg = svg.replace('height="1754" viewBox="0 0 1240 1754"', 'height="1950" viewBox="0 0 1240 1950"', 1)
 
 brand = inline_svg(BRAND, 62, 1780, 390, 110, "embuilded-company-logo")
-qr = inline_svg(QR, 1010, 1770, 150, 153, "website-qr-code")
+qr = inline_svg(QR, 1010, 1770, 150, 153, "product-page-qr-code")
 
 footer = f'''
 <g id="company-contact-footer">
@@ -36,7 +36,7 @@ footer = f'''
   <text x="510" y="1872" fill="#0F2937" font-family="Arial, Helvetica, sans-serif" font-size="18">+852 0000 0000 <tspan fill="#6B7C87" font-size="13">(placeholder)</tspan></text>
   <text x="510" y="1904" fill="#0F2937" font-family="Arial, Helvetica, sans-serif" font-size="18">www.embuilded.com</text>
   <rect x="998" y="1768" width="174" height="160" rx="5" fill="#FFFFFF"/>
-  <text x="1085" y="1934" text-anchor="middle" fill="#0F2937" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">SCAN TO VISIT OUR WEBSITE</text>
+  <text x="1085" y="1934" text-anchor="middle" fill="#0F2937" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">VIEW PRODUCT DETAILS</text>
   {qr}
 </g>
 '''
