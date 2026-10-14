@@ -13,7 +13,7 @@ ET.register_namespace('xlink', XLINK)
 source = ET.parse(SOURCE).getroot()
 parts = list(next(n for n in source if n.tag == f'{{{SVG}}}g'))
 overlay = next(n for n in source if n.get('id') == 'case-and-contact-update-v1')
-INK, AMBER, MUTED = '#1C2632', '#F5B218', '#52636D'
+INK, AMBER, MUTED = '#1C2632', '#EFB33B', '#52636D'
 page = ET.Element(f'{{{SVG}}}svg', {
     'width': '1240', 'height': '1754', 'viewBox': '0 0 1240 1754', 'fill': 'none',
 })
@@ -43,7 +43,8 @@ def line(x1, y1, x2, y2, color='#D9E0E4', width=1):
 add('title').text = 'TRACI HNAG1000-4-STX / Gas Detector / 1240 x 1754'
 add('desc').text = ('Native 1240 x 1754 pixel brochure with editable text. '
                     'Preserves the selected master logo outlines, embedded product photos and QR modules. '
-                    'Gas channel labels summarize specifications already present in the master.')
+                    'Measurements use a gas-by-gas matrix; general specifications are listed separately. '
+                    'CNAS reporting availability is a supplier service statement, not product certification.')
 defs = add('defs')
 defs.append(deepcopy(next(n for n in source.iter() if n.get('id') == 'image0_194_889')))
 rect(0, 0, 1240, 1754, 'white')
@@ -60,62 +61,76 @@ text(64, 228, 'Portable Online Four Gas Detector', 39, 700)
 text(64, 263, 'Continuous monitoring of EX, O2, CO and H2S', 20, color=MUTED)
 
 # Preserve the cleaned master image plus all three original masking rectangles.
-products = add('g', id='original-clean-detector-pair', transform='translate(-11 -37) scale(1.75)')
+products = add('g', id='original-clean-detector-pair', transform='translate(-22 -104) scale(2)')
 for n in overlay:
     if n.tag == f'{{{SVG}}}use' or (
         n.tag == f'{{{SVG}}}rect' and n.get('fill') == 'white' and n.get('x') != '39.75'
     ):
         products.append(deepcopy(n))
 case = deepcopy(next(n for n in overlay if n.get('id') == 'protective-case-photo'))
-case.attrib.update({'x': '808', 'y': '329', 'width': '355', 'height': '257'})
+case.attrib.update({'x': '790', 'y': '337', 'width': '382', 'height': '277'})
 page.append(case)
 
-# Four channel names add useful context rather than new product claims.
-channels = add('g', id='gas-channel-overview')
-rect(64, 644, 1112, 70, '#F7F4EA')
-for idx, (symbol, label) in enumerate([
-    ('EX', 'Combustible gas'), ('O2', 'Oxygen'), ('CO', 'Carbon monoxide'), ('H2S', 'Hydrogen sulphide'),
+# Replace the removed gas strip with a short, factual feature summary.
+rect(64, 676, 1112, 39, INK)
+text(88, 703, '24-HOUR CONNECTED MONITORING', 22, 700, AMBER)
+rect(64, 715, 1112, 78, '#F1F4F6')
+for idx, (label, value) in enumerate([
+    ('DISPLAY', '2.5-inch colour'),
+    ('LOCAL ALARMS', 'Audible and visual'),
+    ('SENSING', 'Temperature & humidity'),
+    ('CONNECTIVITY', 'Remote data transmission'),
 ]):
-    x = 84 + 278 * idx
+    x = 88 + idx * 278
     if idx:
-        line(x - 20, 660, x - 20, 698, '#D7D9D4')
-    text(x, 689, symbol, 27, 700)
-    text(x + (57 if symbol != 'H2S' else 65), 687, label, 17, color=MUTED)
+        line(x - 24, 730, x - 24, 777, '#D6DFE4')
+    text(x, 744, label, 15.5, 700, MUTED, letter_spacing='.35')
+    text(x, 773, value, 18.5)
 
-rect(64, 738, 1112, 107, '#F1F4F6', rx=5)
-text(88, 769, '24-HOUR CONNECTED MONITORING', 22, 700, '#AD7500')
-text(88, 801, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
-text(88, 828, 'remote data transmission and multiple wireless communication options.', 19.5)
+text(64, 834, 'Technical data', 31, 700)
+# Gas columns make use of the full width and avoid long semicolon-separated values.
+rect(64, 855, 1112, 38, INK)
+text(84, 881, 'MEASUREMENT', 17, 700, 'white')
+centres = [421.75, 637.25, 852.75, 1068.25]
+for x, gas in zip(centres, ['EX', 'O2', 'CO', 'H2S']):
+    text(x, 881, gas, 19, 700, 'white', text_anchor='middle')
+for idx, (label, values) in enumerate([
+    ('Measuring range', ['0–100 %LEL', '0–30 %vol', '0–500 ppm', '0–100 ppm']),
+    ('Resolution', ['0.1 %LEL', '0.1 %vol', '1 ppm', '0.1 ppm']),
+]):
+    y = 893 + idx * 40
+    rect(64, y, 1112, 40, '#F7F4EA' if idx % 2 == 0 else 'white')
+    text(84, y + 27, label, 20, 700)
+    for x, value in zip(centres, values):
+        text(x, y + 27, value, 21, text_anchor='middle')
+for x in [314, 529.5, 745, 960.5]:
+    line(x, 893, x, 973, '#E1E6E9')
+rect(64, 973, 1112, 40, '#F7F4EA')
+text(84, 1000, 'Accuracy / response', 20, 700)
+text(334, 1000, '±2 % F.S. / T90 < 10 s', 21)
+line(314, 973, 314, 1013, '#E1E6E9')
 
-text(64, 891, 'Technical data', 31, 700)
-rect(64, 913, 1112, 42, INK)
-text(84, 941, 'PARAMETER', 17, 700, 'white')
-text(386, 941, 'SPECIFICATION', 17, 700, 'white')
+rect(64, 1033, 1112, 38, INK)
+text(84, 1059, 'GENERAL', 17, 700, 'white')
+text(334, 1059, 'SPECIFICATION', 17, 700, 'white')
 rows = [
-    ('Target gases', ['EX / O2 / CO / H2S']),
-    ('Ranges', ['EX 0–100 %LEL; O2 0–30 %vol;', 'CO 0–500 ppm; H2S 0–100 ppm']),
-    ('Resolution', ['EX 0.1 %LEL; O2 0.1 %vol; CO 1 ppm; H2S 0.1 ppm']),
-    ('Accuracy / response', ['±2 % F.S. / T90 < 10 s']),
-    ('Environment', ['−30 to 50 °C; 0–95 %RH; 86–106 kPa']),
-    ('Supply', ['12–30 V DC; ≤50 mA']),
-    ('Protection', ['IP66 / Ex d IIC T6']),
-    ('Wireless', ['GPRS, 4G, Wi-Fi, LoRa and ZigBee']),
-    ('Runtime', ['>16 h single gas; >12 h four gas without pump']),
-    ('Dimensions', ['460 H × 340 W × 115 D mm']),
-    ('Warranty', ['1 year; expected service life 3–5 years']),
+    ('Environment', '−30 to 50 °C; 0–95 %RH; 86–106 kPa'),
+    ('Supply', '12–30 V DC; ≤50 mA'),
+    ('Protection', 'IP66 / Ex d IIC T6'),
+    ('Wireless', 'GPRS · 4G · Wi-Fi · LoRa · ZigBee'),
+    ('Runtime', 'Single gas: >16 h; four gas without pump: >12 h'),
+    ('Dimensions', '460 H × 340 W × 115 D mm'),
+    ('Warranty', '1 year; expected service life 3–5 years'),
 ]
-y = 955
-for idx, (label, values) in enumerate(rows):
-    h = 50 if len(values) > 1 else 34
-    rect(64, y, 1112, h, '#F7F4EA' if idx % 2 else 'white')
-    text(84, y + (32 if len(values) > 1 else 24), label, 20, 700)
-    for line_no, value in enumerate(values):
-        text(386, y + 22 + line_no * 22, value, 21)
-    y += h
-line(364, 955, 364, y, '#E1E6E9', 1)
-line(64, y, 1176, y, '#CFD8DE', 1)
-text(64, 1381, 'CNAS TEST REPORT ENQUIRIES', 17, 700, MUTED)
-text(1176, 1381, 'Contact us for details', 17, color=MUTED, text_anchor='end')
+for idx, (label, value) in enumerate(rows):
+    y = 1071 + idx * 40
+    rect(64, y, 1112, 40, 'white' if idx % 2 == 0 else '#F7F4EA')
+    text(84, y + 27, label, 20, 700)
+    text(334, y + 27, value, 21)
+line(314, 1071, 314, 1351, '#E1E6E9')
+line(64, 1351, 1176, 1351, '#CFD8DE')
+# Service availability supplied by the user; do not depict it as product accreditation.
+text(64, 1388, 'CNAS-accredited laboratory test reports available on request.', 18, color=MUTED)
 
 rect(0, 1420, 1240, 88, INK)
 text(64, 1451, 'APPLICATIONS', 17, 700, AMBER, letter_spacing='.6')
@@ -128,7 +143,7 @@ brand = add('svg', id='embuilded-original-logo', x=64, y=1581, width=380, height
 for n in parts[67:121]:
     brand.append(deepcopy(n))
 line(474, 1546, 474, 1703, '#CED7DD', 1.5)
-text(506, 1551, 'CONTACT', 17, 700, '#AD7500', letter_spacing='.5')
+text(506, 1551, 'CONTACT', 17, 700, AMBER, letter_spacing='.5')
 text(506, 1587, 'Freddie Leung', 26, 700)
 text(506, 1613, 'BD Manager', 17, color=MUTED)
 text(506, 1655, 'freddie.leung@embuilded.com', 21, color='#324955')
