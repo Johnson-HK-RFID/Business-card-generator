@@ -78,7 +78,7 @@ text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700, AMBER)
 text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
 text(88, 773, 'remote data transmission and multiple wireless communication options.', 19.5)
 
-text(64, 834, 'Technical data', 31, 700)
+text(64, 834, 'TECHNICAL DATA', 29, 700, letter_spacing='.8')
 # One header covers the complete table. The first three rows share four gas columns.
 rect(64, 855, 1112, 40, INK)
 text(84, 881, 'PARAMETER', 17, 700, 'white')

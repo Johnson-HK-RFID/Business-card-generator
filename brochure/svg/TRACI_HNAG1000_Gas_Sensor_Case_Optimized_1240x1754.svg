@@ -34,7 +34,7 @@
   <text x="88" y="709" fill="#EFB33B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">24-HOUR CONNECTED MONITORING</text>
   <text x="88" y="743" fill="#1C2632" font-family="Arial, Helvetica, sans-serif" font-size="19.5" font-weight="400">2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,</text>
   <text x="88" y="773" fill="#1C2632" font-family="Arial, Helvetica, sans-serif" font-size="19.5" font-weight="400">remote data transmission and multiple wireless communication options.</text>
-  <text x="64" y="834" fill="#1C2632" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Technical data</text>
+  <text x="64" y="834" fill="#1C2632" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" letter-spacing=".8">TECHNICAL DATA</text>
   <rect x="64" y="855" width="1112" height="40" fill="#1C2632" />
   <text x="84" y="881" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">PARAMETER</text>
   <text x="334" y="881" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">SPECIFICATION</text>
