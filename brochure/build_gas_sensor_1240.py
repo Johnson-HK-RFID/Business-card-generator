@@ -74,7 +74,7 @@ page.append(case)
 # A prose summary avoids a third table and gives the dark data header more emphasis.
 rect(64, 678, 1112, 115, '#F1F4F6', rx=4)
 rect(64, 678, 3, 115, AMBER)
-text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700)
+text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700, AMBER)
 text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
 text(88, 773, 'remote data transmission and multiple wireless communication options.', 19.5)
 
@@ -113,7 +113,8 @@ for idx, (label, value) in enumerate(rows):
     text(84, y + 28, label, 20, 700)
     text(334, y + 28, value, 21)
 line(314, 895, 314, 1357, '#E1E6E9')
-line(64, 1063, 1176, 1063, '#DCE3E7')
+# Subtle division between the gas-specific measurements and general specifications.
+line(64, 1021, 1176, 1021, '#D7DFE4', 1.2)
 line(64, 1357, 1176, 1357, '#CFD8DE')
 # Service availability supplied by the user; do not depict it as product accreditation.
 text(64, 1388, 'CNAS-accredited laboratory test reports available on request.', 18, color=MUTED)
