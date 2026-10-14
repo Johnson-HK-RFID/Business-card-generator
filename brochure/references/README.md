@@ -9,7 +9,8 @@ Official PDF:
 https://prod-edam.honeywell.com/content/dam/honeywell-edam/sps/his/it-it/products/gas-and-flame-detection/documents/sps-his-honeywell-bw-icon-datasheet.pdf
 
 Page 2 separates general specifications from sensor specifications. This informed the
-TRACI measurement matrix and separate general table. The downloaded PDF is kept here
+TRACI measurement matrix, now integrated with general data under one continuous table
+header to simplify this single-page brochure. The downloaded PDF is kept here
 for internal reference only. The TRACI values remain those of the user's master.
 
 ## Drager X-zone 5800

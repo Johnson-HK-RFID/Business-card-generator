@@ -43,7 +43,7 @@ def line(x1, y1, x2, y2, color='#D9E0E4', width=1):
 add('title').text = 'TRACI HNAG1000-4-STX / Gas Detector / 1240 x 1754'
 add('desc').text = ('Native 1240 x 1754 pixel brochure with editable text. '
                     'Preserves the selected master logo outlines, embedded product photos and QR modules. '
-                    'Measurements use a gas-by-gas matrix; general specifications are listed separately. '
+                    'One continuous specification table contains gas-by-gas measurements and general data. '
                     'CNAS reporting availability is a supplier service statement, not product certification.')
 defs = add('defs')
 defs.append(deepcopy(next(n for n in source.iter() if n.get('id') == 'image0_194_889')))
@@ -71,49 +71,34 @@ case = deepcopy(next(n for n in overlay if n.get('id') == 'protective-case-photo
 case.attrib.update({'x': '790', 'y': '337', 'width': '382', 'height': '277'})
 page.append(case)
 
-# Replace the removed gas strip with a short, factual feature summary.
-rect(64, 676, 1112, 39, INK)
-text(88, 703, '24-HOUR CONNECTED MONITORING', 22, 700, AMBER)
-rect(64, 715, 1112, 78, '#F1F4F6')
-for idx, (label, value) in enumerate([
-    ('DISPLAY', '2.5-inch colour'),
-    ('LOCAL ALARMS', 'Audible and visual'),
-    ('SENSING', 'Temperature & humidity'),
-    ('CONNECTIVITY', 'Remote data transmission'),
-]):
-    x = 88 + idx * 278
-    if idx:
-        line(x - 24, 730, x - 24, 777, '#D6DFE4')
-    text(x, 744, label, 15.5, 700, MUTED, letter_spacing='.35')
-    text(x, 773, value, 18.5)
+# A prose summary avoids a third table and gives the dark data header more emphasis.
+rect(64, 678, 1112, 115, '#F1F4F6', rx=4)
+rect(64, 678, 3, 115, AMBER)
+text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700)
+text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
+text(88, 773, 'remote data transmission and multiple wireless communication options.', 19.5)
 
 text(64, 834, 'Technical data', 31, 700)
-# Gas columns make use of the full width and avoid long semicolon-separated values.
-rect(64, 855, 1112, 38, INK)
-text(84, 881, 'MEASUREMENT', 17, 700, 'white')
+# One header covers the complete table. The first three rows share four gas columns.
+rect(64, 855, 1112, 40, INK)
+text(84, 881, 'PARAMETER', 17, 700, 'white')
+text(334, 881, 'SPECIFICATION', 17, 700, 'white')
 centres = [421.75, 637.25, 852.75, 1068.25]
-for x, gas in zip(centres, ['EX', 'O2', 'CO', 'H2S']):
-    text(x, 881, gas, 19, 700, 'white', text_anchor='middle')
 for idx, (label, values) in enumerate([
+    ('Target gases', ['EX', 'O2', 'CO', 'H2S']),
     ('Measuring range', ['0–100 %LEL', '0–30 %vol', '0–500 ppm', '0–100 ppm']),
     ('Resolution', ['0.1 %LEL', '0.1 %vol', '1 ppm', '0.1 ppm']),
 ]):
-    y = 893 + idx * 40
-    rect(64, y, 1112, 40, '#F7F4EA' if idx % 2 == 0 else 'white')
-    text(84, y + 27, label, 20, 700)
+    y = 895 + idx * 42
+    rect(64, y, 1112, 42, 'white' if idx % 2 == 0 else '#F7F4EA')
+    text(84, y + 28, label, 20, 700)
     for x, value in zip(centres, values):
-        text(x, y + 27, value, 21, text_anchor='middle')
-for x in [314, 529.5, 745, 960.5]:
-    line(x, 893, x, 973, '#E1E6E9')
-rect(64, 973, 1112, 40, '#F7F4EA')
-text(84, 1000, 'Accuracy / response', 20, 700)
-text(334, 1000, '±2 % F.S. / T90 < 10 s', 21)
-line(314, 973, 314, 1013, '#E1E6E9')
+        text(x, y + 28, value, 21, 700 if idx == 0 else 400, text_anchor='middle')
+for x in [529.5, 745, 960.5]:
+    line(x, 895, x, 1021, '#E1E6E9')
 
-rect(64, 1033, 1112, 38, INK)
-text(84, 1059, 'GENERAL', 17, 700, 'white')
-text(334, 1059, 'SPECIFICATION', 17, 700, 'white')
 rows = [
+    ('Accuracy / response', '±2 % F.S. / T90 < 10 s'),
     ('Environment', '−30 to 50 °C; 0–95 %RH; 86–106 kPa'),
     ('Supply', '12–30 V DC; ≤50 mA'),
     ('Protection', 'IP66 / Ex d IIC T6'),
@@ -123,12 +108,13 @@ rows = [
     ('Warranty', '1 year; expected service life 3–5 years'),
 ]
 for idx, (label, value) in enumerate(rows):
-    y = 1071 + idx * 40
-    rect(64, y, 1112, 40, 'white' if idx % 2 == 0 else '#F7F4EA')
-    text(84, y + 27, label, 20, 700)
-    text(334, y + 27, value, 21)
-line(314, 1071, 314, 1351, '#E1E6E9')
-line(64, 1351, 1176, 1351, '#CFD8DE')
+    y = 1021 + idx * 42
+    rect(64, y, 1112, 42, '#F7F4EA' if idx % 2 == 0 else 'white')
+    text(84, y + 28, label, 20, 700)
+    text(334, y + 28, value, 21)
+line(314, 895, 314, 1357, '#E1E6E9')
+line(64, 1063, 1176, 1063, '#DCE3E7')
+line(64, 1357, 1176, 1357, '#CFD8DE')
 # Service availability supplied by the user; do not depict it as product accreditation.
 text(64, 1388, 'CNAS-accredited laboratory test reports available on request.', 18, color=MUTED)
 
