@@ -158,5 +158,7 @@
   <text x="363" y="1022" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">freddie@hk-rfid.com</text>
   <text x="363" y="1046" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">Tel   (852) 3426 9511</text>
   <text x="363" y="1070" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">Mobile   (852) 9385 5543</text>
+  <text x="363" y="1091" fill="#B77D00" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing="0.4">CNAS TEST REPORT OPTION</text>
+  <text x="363" y="1105" fill="#52636D" font-family="Arial, Helvetica, sans-serif" font-size="7.5">Available via a CNAS-accredited laboratory on request.</text>
 </g>
 </svg>
