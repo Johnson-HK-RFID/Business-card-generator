@@ -75,8 +75,8 @@ page.append(case)
 rect(64, 678, 1112, 115, '#F1F4F6', rx=4)
 rect(64, 678, 3, 115, AMBER)
 text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700, TEXT_AMBER)
-text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
-text(88, 773, 'remote data transmission and multiple wireless communication options.', 19.5)
+text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 21)
+text(88, 773, 'remote data transmission and multiple wireless communication options.', 21)
 
 text(64, 834, 'TECHNICAL DATA', 29, 700, letter_spacing='.8')
 # One header covers the complete table. The first three rows share four gas columns.
@@ -91,9 +91,9 @@ for idx, (label, values) in enumerate([
 ]):
     y = 895 + idx * 42
     rect(64, y, 1112, 42, 'white' if idx % 2 == 0 else '#F7F4EA')
-    text(84, y + 28, label, 20, 700)
+    text(84, y + 28, label, 21, 700)
     for x, value in zip(centres, values):
-        text(x, y + 28, value, 21, 700 if idx == 0 else 400, text_anchor='middle')
+        text(x, y + 28, value, 22, 700 if idx == 0 else 400, text_anchor='middle')
 for x in [529.5, 745, 960.5]:
     line(x, 895, x, 1021, '#E1E6E9')
 
@@ -110,18 +110,18 @@ rows = [
 for idx, (label, value) in enumerate(rows):
     y = 1021 + idx * 42
     rect(64, y, 1112, 42, '#F7F4EA' if idx % 2 == 0 else 'white')
-    text(84, y + 28, label, 20, 700)
-    text(334, y + 28, value, 21)
+    text(84, y + 28, label, 21, 700)
+    text(334, y + 28, value, 22)
 line(314, 895, 314, 1357, '#E1E6E9')
 # Subtle division between the gas-specific measurements and general specifications.
 line(64, 1021, 1176, 1021, '#D7DFE4', 1.2)
 line(64, 1357, 1176, 1357, '#CFD8DE')
 # Service availability supplied by the user; do not depict it as product accreditation.
-text(64, 1388, 'CNAS-accredited laboratory test reports available on request.', 18, color=MUTED)
+text(64, 1388, 'CNAS-accredited laboratory test reports available on request.', 19, color=MUTED)
 
 rect(0, 1420, 1240, 88, INK)
 text(64, 1451, 'APPLICATIONS', 17, 700, AMBER, letter_spacing='.6')
-text(64, 1483, 'Oil & gas · Chemical processing · Steel · Power · Wastewater · Tunnels · Hazardous-area safety', 17.5, color='white')
+text(64, 1483, 'Oil & gas · Chemical processing · Steel · Power · Wastewater · Tunnels · Hazardous-area safety', 19, color='white')
 rect(0, 1508, 1240, 3, AMBER)
 rect(0, 1511, 1240, 243, '#F1F4F6')
 
@@ -132,7 +132,7 @@ for n in parts[67:121]:
 line(474, 1546, 474, 1703, '#CED7DD', 1.5)
 text(506, 1551, 'CONTACT', 17, 700, TEXT_AMBER, letter_spacing='.5')
 text(506, 1587, 'Freddie Leung', 26, 700)
-text(506, 1613, 'BD Manager', 17, color=MUTED)
+text(506, 1613, 'BD Manager', 18, color=MUTED)
 text(506, 1655, 'freddie.leung@embuilded.com', 21, color='#324955')
 text(506, 1692, '+852 9385 5543', 21, color='#324955')
 rect(1014, 1541, 153, 153, 'white', rx=4)
