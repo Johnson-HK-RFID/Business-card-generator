@@ -21,15 +21,17 @@ $overlay = @"
   <rect x="374" y="248" width="26" height="120" fill="white"/>
   <image id="protective-case-photo" x="409" y="187" width="334" height="232" preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,$caseBase64"/>
 
+  <!-- Testing option sits with the technical information, not the contact block. -->
+  <text x="513" y="561" fill="#B77D00" font-family="Arial, Helvetica, sans-serif" font-size="7.2" font-weight="700" letter-spacing="0.35">CNAS TEST REPORT OPTION / ON REQUEST</text>
+
   <!-- Replace only the central contact panel; retain the master Embuilded logo and QR. -->
-  <rect x="348" y="973" width="243" height="133" fill="#F1F4F6"/>
-  <line x1="348" y1="987" x2="348" y2="1085" stroke="#CAD3D8" stroke-width="1"/>
-  <text x="363" y="995" fill="#F5A91B" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2">CONTACT</text>
-  <text x="363" y="1022" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">freddie@hk-rfid.com</text>
-  <text x="363" y="1046" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">Tel   (852) 3426 9511</text>
-  <text x="363" y="1070" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="9">Mobile   (852) 9385 5543</text>
-  <text x="363" y="1091" fill="#B77D00" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing="0.4">CNAS TEST REPORT OPTION</text>
-  <text x="363" y="1105" fill="#52636D" font-family="Arial, Helvetica, sans-serif" font-size="7.5">Available via a CNAS-accredited laboratory on request.</text>
+  <rect x="360" y="973" width="231" height="133" fill="#F1F4F6"/>
+  <line x1="360" y1="987" x2="360" y2="1085" stroke="#CAD3D8" stroke-width="1"/>
+  <text x="376" y="995" fill="#F5A91B" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2">CONTACT</text>
+  <text x="376" y="1018" fill="#1C2632" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700">Freddie Leung</text>
+  <text x="376" y="1032" fill="#52636D" font-family="Arial, Helvetica, sans-serif" font-size="7.8" font-weight="700">BD Manager</text>
+  <text x="376" y="1054" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="7.9">freddie.leung@embuilded.com</text>
+  <text x="376" y="1076" fill="#324955" font-family="Arial, Helvetica, sans-serif" font-size="8.6">+852 9385 5543</text>
 </g>
 "@
 
