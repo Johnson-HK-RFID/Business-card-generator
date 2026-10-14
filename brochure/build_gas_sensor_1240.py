@@ -13,7 +13,7 @@ ET.register_namespace('xlink', XLINK)
 source = ET.parse(SOURCE).getroot()
 parts = list(next(n for n in source if n.tag == f'{{{SVG}}}g'))
 overlay = next(n for n in source if n.get('id') == 'case-and-contact-update-v1')
-INK, AMBER, MUTED = '#1C2632', '#EFB33B', '#52636D'
+INK, AMBER, TEXT_AMBER, MUTED = '#1C2632', '#EFB33B', '#C87500', '#52636D'
 page = ET.Element(f'{{{SVG}}}svg', {
     'width': '1240', 'height': '1754', 'viewBox': '0 0 1240 1754', 'fill': 'none',
 })
@@ -74,7 +74,7 @@ page.append(case)
 # A prose summary avoids a third table and gives the dark data header more emphasis.
 rect(64, 678, 1112, 115, '#F1F4F6', rx=4)
 rect(64, 678, 3, 115, AMBER)
-text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700, AMBER)
+text(88, 709, '24-HOUR CONNECTED MONITORING', 22, 700, TEXT_AMBER)
 text(88, 743, '2.5-inch colour display, local audible and visual alarms, temperature and humidity sensing,', 19.5)
 text(88, 773, 'remote data transmission and multiple wireless communication options.', 19.5)
 
@@ -130,7 +130,7 @@ brand = add('svg', id='embuilded-original-logo', x=64, y=1581, width=380, height
 for n in parts[67:121]:
     brand.append(deepcopy(n))
 line(474, 1546, 474, 1703, '#CED7DD', 1.5)
-text(506, 1551, 'CONTACT', 17, 700, AMBER, letter_spacing='.5')
+text(506, 1551, 'CONTACT', 17, 700, TEXT_AMBER, letter_spacing='.5')
 text(506, 1587, 'Freddie Leung', 26, 700)
 text(506, 1613, 'BD Manager', 17, color=MUTED)
 text(506, 1655, 'freddie.leung@embuilded.com', 21, color='#324955')
